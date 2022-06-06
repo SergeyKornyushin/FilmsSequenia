@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import com.example.filmssequenia.R
 import com.example.filmssequenia.databinding.FilmItemBinding
 import com.example.filmssequenia.kotlinapp.mvp.models.entities.Film
+import com.example.filmssequenia.utils.ResourcesUtils
 import com.example.filmssequenia.utils.image_loader.ImageLoader
 
 open class FilmViewHolder(
@@ -25,11 +26,14 @@ open class FilmViewHolder(
 
     private fun showFilmInfo() {
         binding.tvFilmName.text = film.localized_name
-        ImageLoader
-            .load(film.image_url)
-            .error(android.R.drawable.stat_notify_error)
-            .centerCrop()
-            .roundedCorners(4)
+        if (film.image_url.isNotEmpty())
+            ImageLoader
+                .load(film.image_url)
+                .error(android.R.drawable.stat_notify_error)
+                .centerCrop()
+                .roundedCorners(4)
+                .into(binding.imgPoster)
+        else ImageLoader.load(android.R.drawable.stat_notify_error)
             .into(binding.imgPoster)
     }
 

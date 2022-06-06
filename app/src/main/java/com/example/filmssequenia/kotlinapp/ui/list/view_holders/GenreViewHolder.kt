@@ -1,5 +1,6 @@
 package com.example.filmssequenia.kotlinapp.ui.list.view_holders
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.example.filmssequenia.R

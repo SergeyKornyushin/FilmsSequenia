@@ -46,23 +46,14 @@ class FilmModelProd(
     }
 
     override fun getFilmsByGenre(callback: FilmModel.GetFilmsCallback, genre: Genre) {
-        object : FilmModel.GetFilmsCallback {
-            override fun onSuccess(data: List<ListItem>) {
-                scope.launch {
-                    callback.onSuccess(
-                        mapperRvFiller.createListForRecyclerView(
-                            genres = filmsDao.getAllGenres(),
-                            films = filmsDao.getGenreWithFilms(genre.genreName).filmsDb,
-                            genre = genre
-                        )
-                    )
-                }
-            }
-
-            override fun onError(error: String) {
-                callback.onError(error)
-            }
-
+        scope.launch {
+            callback.onSuccess(
+                mapperRvFiller.createListForRecyclerView(
+                    genres = filmsDao.getAllGenres(),
+                    films = filmsDao.getGenreWithFilms(genre.genreName).filmsDb,
+                    genre = genre
+                )
+            )
         }
     }
 }
