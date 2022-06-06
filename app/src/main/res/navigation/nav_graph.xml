@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/filmsList">
+
+
+    <fragment
+        android:id="@+id/filmsList"
+        android:name="com.example.filmssequenia.kotlinapp.ui.fragments.FilmsListFragment"
+        android:label="Главная"
+        tools:layout="@layout/fragment_films_list" >
+        <action
+            android:id="@+id/action_filmsList_to_filmPage"
+            app:destination="@id/filmPage" />
+    </fragment>
+    <fragment
+        android:id="@+id/filmPage"
+        android:name="com.example.filmssequenia.kotlinapp.ui.fragments.FilmPageFragment"
+        android:label="fragment_film_page"
+        tools:layout="@layout/fragment_film_page" >
+        <argument
+            android:name="film"
+            app:argType="com.example.filmssequenia.kotlinapp.mvp.models.entities.Film" />
+    </fragment>
+</navigation>
