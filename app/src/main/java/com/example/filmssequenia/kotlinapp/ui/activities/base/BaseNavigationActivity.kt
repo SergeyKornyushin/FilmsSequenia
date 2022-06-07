@@ -1,6 +1,7 @@
 package com.example.filmssequenia.kotlinapp.ui.activities.base
 
 import android.os.Bundle
+import android.util.Log
 import androidx.annotation.LayoutRes
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -28,9 +29,6 @@ abstract class BaseNavigationActivity(
         val navHost =
             supportFragmentManager.findFragmentById(getNavigationViewId()) as NavHostFragment
         navigationController = navHost.navController
-        NavigationUI.setupActionBarWithNavController(this, navigationController)
     }
 
-    override fun onSupportNavigateUp() =
-        navigationController.navigateUp() || super.onSupportNavigateUp()
 }

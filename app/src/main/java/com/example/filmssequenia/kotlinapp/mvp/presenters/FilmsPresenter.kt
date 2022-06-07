@@ -1,5 +1,6 @@
 package com.example.filmssequenia.kotlinapp.mvp.presenters
 
+import android.util.Log
 import com.example.filmssequenia.kotlinapp.mvp.models.FilmModel
 import com.example.filmssequenia.kotlinapp.mvp.models.FilmModelProd
 import com.example.filmssequenia.kotlinapp.mvp.models.FilmsModel
@@ -9,6 +10,7 @@ import com.example.filmssequenia.kotlinapp.mvp.models.entities.Genre
 import com.example.filmssequenia.kotlinapp.mvp.presenters.base.BasePresenter
 import com.example.filmssequenia.kotlinapp.mvp.views.FilmsView
 import com.example.filmssequenia.kotlinapp.ui.list.ListItem
+import java.lang.StringBuilder
 
 class FilmsPresenter(private val filmsModel: FilmsModel, private val filmModel: FilmModel) :
     BasePresenter<FilmsView>() {
@@ -26,6 +28,7 @@ class FilmsPresenter(private val filmsModel: FilmsModel, private val filmModel: 
             }
 
             override fun onError(error: String) {
+                viewState.endContentLoading()
                 viewState.showContentLoadingError(error)
             }
         })
@@ -45,12 +48,18 @@ class FilmsPresenter(private val filmsModel: FilmsModel, private val filmModel: 
             })
     }
 
-    fun getFilm(filmId: Int){
+    fun getFilm(filmId: Int) {
         (filmModel as FilmModelProd).getSelectedFilm(
             filmId = filmId,
-            callback = object: FilmModel.GetFilmCallback{
+            callback = object : FilmModel.GetFilmCallback {
                 override fun onSuccess(data: Film) {
-                    viewState.showFilm(data)
+                    val stringBuilder = StringBuilder()
+                    data.genres.forEach { genre ->
+                        stringBuilder.append("${genre.lowercase()}, ")
+                    }
+                    stringBuilder.append(data.year)
+
+                    viewState.showFilm(data, stringBuilder.toString())
                 }
 
                 override fun onError(error: String) {

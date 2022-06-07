@@ -1,19 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/base_with_app_bar_activity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/base_with_app_bar_activity"
+    android:orientation="vertical"
     tools:context=".kotlinapp.ui.activities.MainActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/collapsing_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/collapsing_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.example.filmssequenia.utils.CenteredTitleToolbar
+                    android:id="@+id/toolbar"
+                    app:titleTextColor="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/main_controller"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/white"
         app:defaultNavHost="true"
-        app:navGraph="@navigation/nav_graph"
-        android:background="@color/white"/>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        app:navGraph="@navigation/nav_graph" />
+</LinearLayout>

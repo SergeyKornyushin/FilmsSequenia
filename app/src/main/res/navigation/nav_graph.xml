@@ -18,10 +18,13 @@
     <fragment
         android:id="@+id/filmPage"
         android:name="com.example.filmssequenia.kotlinapp.ui.fragments.FilmPageFragment"
-        android:label="fragment_film_page"
+        android:label="{genresWithYear}"
         tools:layout="@layout/fragment_film_page" >
         <argument
             android:name="film"
             app:argType="com.example.filmssequenia.kotlinapp.mvp.models.entities.Film" />
+        <argument
+            android:name="genresWithYear"
+            app:argType="string" />
     </fragment>
 </navigation>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="rating_source">КиноПоиск</string>
+    <string name="main_toolbar_title">Главная</string>
+    <string name="repeat_snackbar">ПОВТОРИТЬ</string>
+</resources>
