@@ -1,9 +1,8 @@
-package com.example.filmssequenia.kotlinapp.ui.list.adapters
+package com.example.filmssequenia.kotlinapp.ui.list.adapters.base
 
 import android.view.LayoutInflater
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.filmssequenia.kotlinapp.ui.list.ListItem
 import com.example.filmssequenia.kotlinapp.ui.list.view_holders.BaseViewHolder
 
 /**

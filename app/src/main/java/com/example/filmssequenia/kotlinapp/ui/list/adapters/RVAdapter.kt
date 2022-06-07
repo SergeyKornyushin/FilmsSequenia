@@ -1,21 +1,31 @@
 package com.example.filmssequenia.kotlinapp.ui.list.adapters
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.example.filmssequenia.kotlinapp.application.App
+import androidx.recyclerview.widget.AsyncListDiffer
+import androidx.recyclerview.widget.DiffUtil
 import com.example.filmssequenia.kotlinapp.mvp.models.entities.Film
 import com.example.filmssequenia.kotlinapp.mvp.models.entities.FilmsHeader
 import com.example.filmssequenia.kotlinapp.mvp.models.entities.Genre
 import com.example.filmssequenia.kotlinapp.mvp.models.entities.GenresHeader
 import com.example.filmssequenia.kotlinapp.ui.list.ListItem
+import com.example.filmssequenia.kotlinapp.ui.list.adapters.base.BaseSequenceAdapter
+import com.example.filmssequenia.kotlinapp.ui.list.adapters.base.DiffUtilsUpdater
 import com.example.filmssequenia.kotlinapp.ui.list.view_holders.*
 
 class RVAdapter(layoutInflater: LayoutInflater) :
-    BaseSequenceAdapter<ListItem, BaseViewHolder>(layoutInflater) {
+    BaseSequenceAdapter<ListItem, BaseViewHolder>(layoutInflater), DiffUtilsUpdater<ListItem> {
 
     private lateinit var filmViewHolderListener: FilmViewHolder.FilmViewHolderListener
     private lateinit var genreViewHolderListener: GenreViewHolder.GenreViewHolderListener
+
+    fun setAdapters(
+        filmViewHolderListener: FilmViewHolder.FilmViewHolderListener,
+        genreViewHolderListener: GenreViewHolder.GenreViewHolderListener
+    ) {
+        this.filmViewHolderListener = filmViewHolderListener
+        this.genreViewHolderListener = genreViewHolderListener
+    }
 
     override fun getItemViewType(item: ListItem): Int {
         return when (item.data) {
@@ -30,7 +40,6 @@ class RVAdapter(layoutInflater: LayoutInflater) :
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
         when (holder.itemViewType) {
             TYPE_GENRES_HEADER -> {
-                Log.i("test4", "onBindViewHolder: ${holder.itemViewType}")
                 (holder as GenresHeaderViewHolder).bind(items[position].data as GenresHeader)
             }
             TYPE_GENRE ->
@@ -63,12 +72,6 @@ class RVAdapter(layoutInflater: LayoutInflater) :
             TYPE_FILM
         )
 
-    fun updateFilms(items: List<ListItem>) {
-        items.forEachIndexed {index,item->
-            updateItems(listOf(item), getItemViewType(item,index))
-        }
-    }
-
     private fun getItemViewType(item: ListItem, index: Int): Int {
         return getItemViewType(item)
     }
@@ -78,5 +81,10 @@ class RVAdapter(layoutInflater: LayoutInflater) :
         const val TYPE_GENRE = 1
         const val TYPE_FILMS_HEADER = 2
         const val TYPE_FILM = 3
+    }
+
+    override fun updateWithDiffUtils(films: List<ListItem>) {
+        val diff = DiffUtil.calculateDiff(DiffCallback(items, films))
+        updateItemsWithDiffUtil(films, diff)
     }
 }

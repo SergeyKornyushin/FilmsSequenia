@@ -1,20 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RadioButton xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tv_rv_title"
     android:layout_width="match_parent"
     android:layout_height="40dp"
->
-
-    <RadioButton
-        android:id="@+id/tv_rv_title"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:button="@android:color/transparent"
-        android:fontFamily="@font/roboto"
-        android:background="@drawable/genre_background_selector"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        tools:text="Title"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginVertical="8dp"/>
-</FrameLayout>
+    android:background="@drawable/genre_background_selector"
+    android:button="@android:color/transparent"
+    android:fontFamily="@font/roboto"
+    android:textColor="@color/black"
+    android:textSize="16sp"
+    tools:text="Title"
+    android:paddingHorizontal="16dp"/>

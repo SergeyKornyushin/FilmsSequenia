@@ -1,4 +1,4 @@
-package com.example.filmssequenia.kotlinapp.ui.list.adapters
+package com.example.filmssequenia.kotlinapp.ui.list.adapters.base
 
 import android.view.MotionEvent
 import androidx.recyclerview.widget.LinearLayoutManager

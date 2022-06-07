@@ -1,5 +1,6 @@
 package com.example.filmssequenia.kotlinapp.ui.list.generators
 
+import android.util.Log
 import com.example.filmssequenia.R
 import com.example.filmssequenia.kotlinapp.data.entities.FilmDb
 import com.example.filmssequenia.kotlinapp.data.entities.GenreDb

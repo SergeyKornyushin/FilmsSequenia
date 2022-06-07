@@ -13,7 +13,7 @@ class FilmsPresenter(private val filmModel: FilmModel) : BasePresenter<FilmsView
         getFilms()
     }
 
-    private fun getFilms() {
+    fun getFilms() {
         viewState.startContentLoading()
         (filmModel as FilmModelProd).getFilms(object : FilmModel.GetFilmsCallback {
             override fun onSuccess(data: List<ListItem>) {
