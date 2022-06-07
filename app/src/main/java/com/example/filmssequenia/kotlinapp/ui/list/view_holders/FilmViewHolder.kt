@@ -2,11 +2,13 @@ package com.example.filmssequenia.kotlinapp.ui.list.view_holders
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import com.example.filmssequenia.R
 import com.example.filmssequenia.databinding.FilmItemBinding
 import com.example.filmssequenia.kotlinapp.mvp.models.entities.Film
 import com.example.filmssequenia.utils.ResourcesUtils
 import com.example.filmssequenia.utils.image_loader.ImageLoader
+import com.example.filmssequenia.utils.image_loader.ImageLoaderListener
 
 open class FilmViewHolder(
     layoutInflater: LayoutInflater,
@@ -29,21 +31,26 @@ open class FilmViewHolder(
         if (film.image_url.isNotEmpty())
             ImageLoader
                 .load(film.image_url)
-                .error(android.R.drawable.stat_notify_error)
-                .centerCrop()
-                .roundedCorners(4)
-                .into(binding.imgPoster)
-        else ImageLoader.load(android.R.drawable.stat_notify_error)
-            .into(binding.imgPoster)
+                .into(binding.imgPoster, object : ImageLoaderListener{
+                    override fun onError(error: String) {
+                        binding.imgPosterNotFound.isVisible = true
+                    }
+
+                    override fun onSuccess() {
+                        binding.imgPosterNotFound.isVisible = false
+                    }
+
+                })
+        else binding.imgPosterNotFound.isVisible = true
     }
 
     private fun setListener() {
         itemView.setOnClickListener {
-            listener.onFilmClick(film)
+            listener.onFilmClick(film.filmId)
         }
     }
 
     interface FilmViewHolderListener {
-        fun onFilmClick(film: Film)
+        fun onFilmClick(filmId: Int)
     }
 }

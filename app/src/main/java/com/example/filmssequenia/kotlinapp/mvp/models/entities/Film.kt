@@ -11,5 +11,6 @@ data class Film(
     val name: String,
     val year: String,
     val rating: String,
-    val description: String
+    val description: String,
+    val genres: List<String> = emptyList()
 ) : Parcelable

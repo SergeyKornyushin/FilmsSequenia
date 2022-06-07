@@ -14,6 +14,7 @@ import com.example.filmssequenia.kotlinapp.mvp.models.entities.Genre
 import com.example.filmssequenia.kotlinapp.mvp.presenters.FilmsPresenter
 import com.example.filmssequenia.kotlinapp.mvp.views.FilmsView
 import com.example.filmssequenia.kotlinapp.ui.fragments.base.BaseFragment
+import com.example.filmssequenia.kotlinapp.ui.fragments.base.BaseNavigationFragment
 import com.example.filmssequenia.kotlinapp.ui.list.ListItem
 import com.example.filmssequenia.kotlinapp.ui.list.adapters.base.ListExtension
 import com.example.filmssequenia.kotlinapp.ui.list.adapters.RVAdapter
@@ -24,7 +25,8 @@ import com.example.filmssequenia.kotlinapp.ui.utils.ScreenLocker
 import moxy.ktx.moxyPresenter
 import org.koin.android.ext.android.get
 
-class FilmsListFragment : BaseFragment(R.layout.fragment_films_list), FilmsView, ScreenLocker,
+class FilmsListFragment : BaseNavigationFragment(R.layout.fragment_films_list), FilmsView,
+    ScreenLocker,
     FilmViewHolder.FilmViewHolderListener, GenreViewHolder.GenreViewHolderListener {
 
     private lateinit var binding: FragmentFilmsListBinding
@@ -48,12 +50,21 @@ class FilmsListFragment : BaseFragment(R.layout.fragment_films_list), FilmsView,
         gridLayoutManager.spanSizeLookup = RVFilmsSpanSize(adapter)
         listExtension!!.setLayoutManager(gridLayoutManager)
 
+        binding.rvFilmsList.itemAnimator = null
+        val defaultItemAnimator = DefaultItemAnimator()
+        binding.rvFilmsList.itemAnimator = defaultItemAnimator
         val itemAnimator = binding.rvFilmsList.itemAnimator
         if (itemAnimator is DefaultItemAnimator) itemAnimator.supportsChangeAnimations = false
+
     }
 
     override fun showFilms(films: List<ListItem>) {
         adapter.updateWithDiffUtils(films)
+    }
+
+    override fun showFilm(film: Film) {
+        val action = FilmsListFragmentDirections.actionFilmsListToFilmPage(film)
+        navigate(action)
     }
 
     override fun startContentLoading() {
@@ -70,8 +81,8 @@ class FilmsListFragment : BaseFragment(R.layout.fragment_films_list), FilmsView,
 
     }
 
-    override fun onFilmClick(film: Film) {
-
+    override fun onFilmClick(filmId: Int) {
+        presenter.getFilm(filmId)
     }
 
     override fun onGenreClick(genre: Genre) {

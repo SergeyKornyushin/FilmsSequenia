@@ -1,13 +1,10 @@
 package com.example.filmssequenia.kotlinapp.mvp.models
 
 import com.example.filmssequenia.kotlinapp.mvp.models.base.BaseCallback
-import com.example.filmssequenia.kotlinapp.mvp.models.entities.Genre
-import com.example.filmssequenia.kotlinapp.ui.list.ListItem
+import com.example.filmssequenia.kotlinapp.mvp.models.entities.Film
 
 interface FilmModel {
+    fun getSelectedFilm(callback: GetFilmCallback, filmId: Int)
 
-    fun getFilms(callback: GetFilmsCallback)
-    fun getFilmsByGenre(callback: GetFilmsCallback, genre: Genre)
-
-    interface GetFilmsCallback : BaseCallback<List<ListItem>>
+    interface GetFilmCallback : BaseCallback<Film>
 }

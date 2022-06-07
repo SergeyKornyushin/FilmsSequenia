@@ -1,6 +1,7 @@
 package com.example.filmssequenia.kotlinapp.data.database
 
 import androidx.room.*
+import com.example.filmssequenia.kotlinapp.data.database.relations.FilmWithGenres
 import com.example.filmssequenia.kotlinapp.data.database.relations.FilmsGenresCrossRef
 import com.example.filmssequenia.kotlinapp.data.database.relations.GenreWithFilms
 import com.example.filmssequenia.kotlinapp.data.entities.FilmDb
@@ -21,6 +22,10 @@ interface FilmsDao {
     @Transaction
     @Query("SELECT * FROM GenreDb WHERE genreName =:genre")
     suspend fun getGenreWithFilms(genre: String): GenreWithFilms
+
+    @Transaction
+    @Query("SELECT * FROM FilmDb WHERE filmId =:filmId")
+    suspend fun getFilmWithGenres(filmId: Int): FilmWithGenres
 
     @Transaction
     @Query("SELECT * FROM GenreDb")

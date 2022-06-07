@@ -6,6 +6,7 @@ import org.koin.dsl.module
 val presentersModule = module {
     factory {
         FilmsPresenter(
+            filmsModel = get(),
             filmModel = get()
         )
     }
