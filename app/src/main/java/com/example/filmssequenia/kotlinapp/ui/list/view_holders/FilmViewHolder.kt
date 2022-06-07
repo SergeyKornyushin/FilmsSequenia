@@ -41,7 +41,10 @@ open class FilmViewHolder(
                     }
 
                 })
-        else binding.imgPosterNotFound.isVisible = true
+        else {
+            binding.imgPosterNotFound.isVisible = true
+            binding.imgPoster.setImageDrawable(null)
+        }
     }
 
     private fun setListener() {

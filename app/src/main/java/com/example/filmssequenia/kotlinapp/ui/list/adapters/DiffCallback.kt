@@ -17,7 +17,7 @@ class DiffCallback(private val oldItems: List<ListItem>, private val newItems: L
     override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
         val isSameGenre = oldItems[oldItemPosition].data is Genre
                 && newItems[newItemPosition].data is Genre
-                && oldItems[oldItemPosition].data == newItems[newItemPosition].data
+//                && oldItems[oldItemPosition].data == newItems[newItemPosition].data
 
         val isSameFilm = oldItems[oldItemPosition].data is Film
                 && newItems[newItemPosition].data is Film

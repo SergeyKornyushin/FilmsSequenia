@@ -23,6 +23,8 @@ import com.example.filmssequenia.kotlinapp.ui.list.ListItem
 import com.example.filmssequenia.kotlinapp.ui.list.adapters.base.ListExtension
 import com.example.filmssequenia.kotlinapp.ui.list.adapters.RVAdapter
 import com.example.filmssequenia.kotlinapp.ui.list.adapters.RVFilmsSpanSize
+import com.example.filmssequenia.kotlinapp.ui.list.adapters.base.CustomItemAnimator
+import com.example.filmssequenia.kotlinapp.ui.list.adapters.base.GridSpacingItemDecoration
 import com.example.filmssequenia.kotlinapp.ui.list.view_holders.FilmViewHolder
 import com.example.filmssequenia.kotlinapp.ui.list.view_holders.GenreViewHolder
 import com.example.filmssequenia.kotlinapp.ui.utils.MessagesHolder
@@ -65,12 +67,9 @@ class FilmsListFragment : BaseWithAppBarNavigationFragment(R.layout.fragment_fil
         listExtension?.setLayoutManager(gridLayoutManager)
 
         binding.rvFilmsList.itemAnimator = null
-        val defaultItemAnimator = DefaultItemAnimator()
-        binding.rvFilmsList.itemAnimator = defaultItemAnimator
-        val itemAnimator = binding.rvFilmsList.itemAnimator
-
-        if (itemAnimator is DefaultItemAnimator) itemAnimator.supportsChangeAnimations = false
-        binding.rvFilmsList.itemAnimator = null
+        binding.rvFilmsList.addItemDecoration(
+            GridSpacingItemDecoration(2, 36, true, 15, false)
+        )
 
         appBarProvider?.setAppBarSettings(this)
         appBarProvider?.setCustomToolbarView(R.layout.centered_toolbar)
