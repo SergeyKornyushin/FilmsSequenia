@@ -2,19 +2,16 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    style="@style/MM"
     android:padding="10dp"
     tools:context=".kotlinapp.ui.fragments.FilmPageFragment">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/LVMW"
         android:orientation="vertical">
 
         <androidx.cardview.widget.CardView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/WW"
             android:layout_gravity="center"
             app:cardCornerRadius="4dp">
 
@@ -22,10 +19,8 @@
                 android:id="@+id/film_poster_image"
                 android:layout_width="150dp"
                 android:layout_height="220dp"
-                tools:src="@tools:sample/avatars"
                 android:scaleType="centerCrop"
-
-                />
+                tools:src="@tools:sample/avatars" />
 
             <ImageView
                 android:id="@+id/poster_not_found_image"
@@ -38,61 +33,36 @@
 
         <TextView
             android:id="@+id/film_name_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto_bold"
-            android:textColor="@color/black"
-            android:textSize="26sp"
+            style="@style/Roboto.Bold.Black_00.Size26.WW"
             tools:text="Title" />
 
         <TextView
             android:id="@+id/genres_year_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/Roboto.Normal.Gray_4b.Size16.WW"
             android:layout_marginTop="10dp"
-            android:fontFamily="@font/roboto"
-            android:textColor="@color/gray_4b"
-            android:textSize="16sp"
             tools:text="genre, year" />
 
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+        <LinearLayout style="@style/LHWW">
 
             <TextView
                 android:id="@+id/film_rating_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/Roboto.Bold.Purple_6936d6.Size24.WW"
                 android:layout_marginTop="10dp"
-                android:fontFamily="@font/roboto_bold"
-                android:textColor="@color/purple_6936d6"
-                android:textSize="24sp"
                 tools:text="Rating" />
 
             <TextView
                 android:id="@+id/rating_source_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/Roboto.Bold.Purple_6936d6.Size16.WW"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="10dp"
-                android:fontFamily="@font/roboto_bold"
-                android:textColor="@color/purple_6936d6"
-                android:textSize="16sp"
                 tools:text="Kinopoisk" />
 
         </LinearLayout>
 
-
         <TextView
             android:id="@+id/film_description_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/Roboto.Normal.Black_00.Size14.MW"
             android:layout_marginTop="10dp"
-            android:fontFamily="@font/roboto"
-            android:textColor="@color/black"
-            android:textSize="14sp"
             tools:text="Description" />
 
     </LinearLayout>

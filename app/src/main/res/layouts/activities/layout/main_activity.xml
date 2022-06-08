@@ -3,32 +3,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/base_with_app_bar_activity"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
+    style="@style/LVMM"
     tools:context=".kotlinapp.ui.activities.MainActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        style="@style/MW">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:id="@+id/collapsing_toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            style="@style/MW">
 
             <LinearLayout
                 android:id="@+id/collapsing_content"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/MW"
                 android:orientation="vertical">
 
                 <com.example.filmssequenia.utils.CenteredTitleToolbar
                     android:id="@+id/toolbar"
-                    app:titleTextColor="@color/white"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    style="@style/MW" />
 
             </LinearLayout>
 
@@ -39,8 +32,7 @@
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/main_controller"
         android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        style="@style/MM"
         android:background="@color/white"
         app:defaultNavHost="true"
         app:navGraph="@navigation/nav_graph" />

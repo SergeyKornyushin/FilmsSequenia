@@ -2,12 +2,10 @@
 <RadioButton xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/genre_text"
+    style="@style/Roboto.Normal.Black_00.Size16"
     android:layout_width="match_parent"
     android:layout_height="40dp"
     android:background="@drawable/bg_genre_selector"
     android:button="@android:color/transparent"
-    android:fontFamily="@font/roboto"
-    android:textColor="@color/black"
-    android:textSize="16sp"
-    tools:text="Title"
-    android:paddingHorizontal="16dp"/>
+    android:paddingHorizontal="16dp"
+    tools:text="Title" />
