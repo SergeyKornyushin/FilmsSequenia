@@ -8,8 +8,11 @@ fun Int?.avoidNullToString(string: String): String {
     return this?.toString() ?: string
 }
 
+/**
+ * double так же приводится к формату #,#
+ */
 fun Double?.avoidNullToString(string: String): String {
-    return if (this == null || this == -1.0) string else this.toString()
+    return if (this == null || this == -1.0) string else "%.1f".format(this)
 }
 
 fun String?.avoidNullToString(string: String): String {
