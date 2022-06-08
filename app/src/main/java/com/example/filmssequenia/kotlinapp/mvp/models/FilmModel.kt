@@ -7,7 +7,8 @@ import com.example.filmssequenia.kotlinapp.mvp.models.entities.Film
  * Model для работы с FilmPage view
  */
 interface FilmModel {
-    fun getSelectedFilm(callback: GetFilmCallback, filmId: Int)
+
+    fun getSelectedFilm(filmId: Int, callback: GetFilmCallback)
 
     /**
      * Callback для FilmModel

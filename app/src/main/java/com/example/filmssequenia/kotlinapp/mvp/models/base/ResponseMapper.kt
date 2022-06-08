@@ -1,4 +1,4 @@
-package com.example.filmssequenia.kotlinapp.mvp.models.entities
+package com.example.filmssequenia.kotlinapp.mvp.models.base
 
 /**
  * Entity для работы во view

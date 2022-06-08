@@ -10,7 +10,7 @@ import com.example.filmssequenia.kotlinapp.ui.list.ListItem
 interface FilmsModel {
 
     fun getFilms(callback: GetFilmsCallback)
-    fun getFilmsByGenre(callback: GetFilmsCallback, genre: Genre)
+    fun getFilmsByGenre(genre: Genre, callback: GetFilmsCallback)
 
     /**
      * Callback для FilmsModel

@@ -6,4 +6,4 @@ import com.example.filmssequenia.kotlinapp.ui.activities.base.BaseWithAppBarNavi
 /**
  * MainActivity
  */
-class MainActivity : BaseWithAppBarNavigationActivity(R.layout.activity_main)
+class MainActivity : BaseWithAppBarNavigationActivity(R.layout.main_activity)

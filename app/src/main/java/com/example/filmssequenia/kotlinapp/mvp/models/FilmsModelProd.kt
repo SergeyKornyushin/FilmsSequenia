@@ -26,6 +26,10 @@ class FilmsModelProd(
     // todo create dispatchers DI
     val scope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
 
+    /**
+     * Возвращает List<ListItem>
+     * со всеми фильмами для RecyclerView
+     */
     override fun getFilms(callback: FilmsModel.GetFilmsCallback) {
         apiFilms.getFilms().enqueue(object : NetworkCallback<FilmsDto> {
             override fun onSuccess(response: FilmsDto?) {
@@ -49,7 +53,11 @@ class FilmsModelProd(
         })
     }
 
-    override fun getFilmsByGenre(callback: FilmsModel.GetFilmsCallback, genre: Genre) {
+    /**
+     * Возвращает List<ListItem>
+     * с фильмами конкретного жанра для RecyclerView
+     */
+    override fun getFilmsByGenre(genre: Genre, callback: FilmsModel.GetFilmsCallback) {
         scope.launch {
             callback.onSuccess(
                 mapperRvFiller.createListForRecyclerView(

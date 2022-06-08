@@ -2,7 +2,7 @@ package com.example.filmssequenia.kotlinapp.data.wrappers
 
 import com.example.filmssequenia.kotlinapp.data.database.relations.FilmsGenresCrossRef
 import com.example.filmssequenia.kotlinapp.data.entities.network.FilmsDto
-import com.example.filmssequenia.kotlinapp.mvp.models.entities.ResponseMapper
+import com.example.filmssequenia.kotlinapp.mvp.models.base.ResponseMapper
 
 /**
  * Маппер сетевого entity к entity базы даннах для

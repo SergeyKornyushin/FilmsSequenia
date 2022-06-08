@@ -10,7 +10,7 @@ import com.example.filmssequenia.R
  * Базовое Activity с навигацией
  */
 abstract class BaseNavigationActivity(
-    @LayoutRes contentLayoutId: Int = R.layout.activity_main
+    @LayoutRes contentLayoutId: Int = R.layout.main_activity
 ) : BaseActivity(contentLayoutId) {
 
     private lateinit var navigationController: NavController

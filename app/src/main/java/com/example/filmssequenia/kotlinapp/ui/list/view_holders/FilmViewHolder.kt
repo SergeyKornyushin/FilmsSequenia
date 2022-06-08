@@ -29,25 +29,25 @@ class FilmViewHolder(
     }
 
     private fun showFilmInfo() {
-        binding.tvFilmName.text = film.localized_name
+        binding.filmNameText.text = film.localized_name
         if (film.image_url.isNotEmpty())
             ImageLoader
                 .load(film.image_url)
                 .into(
-                    binding.imgPoster,
+                    binding.filmPosterImage,
                     object : ImageLoaderListener {
                         override fun onError(error: String) {
-                            binding.imgPosterNotFound.isVisible = true
+                            binding.posterNotFoundImage.isVisible = true
                         }
 
                         override fun onSuccess() {
-                            binding.imgPosterNotFound.isVisible = false
+                            binding.posterNotFoundImage.isVisible = false
                         }
                     }
                 )
         else {
-            binding.imgPosterNotFound.isVisible = true
-            binding.imgPoster.setImageDrawable(null)
+            binding.posterNotFoundImage.isVisible = true
+            binding.filmPosterImage.setImageDrawable(null)
         }
     }
 

@@ -26,8 +26,8 @@ class GenreViewHolder(
     }
 
     private fun showGenreName() {
-        binding.tvRvTitle.text = genre.genreName
-        binding.tvRvTitle.isChecked = genre.isSelected
+        binding.genreText.text = genre.genreName
+        binding.genreText.isChecked = genre.isSelected
     }
 
     private fun setListener() {

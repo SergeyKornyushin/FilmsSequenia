@@ -33,14 +33,14 @@ interface DomainListFiller {
                 type = ListItemTypes.TEXT,
                 id = "1",
                 data = GenresHeader(
-                    name = ResourcesUtils.getString(R.string.genres_title)
+                    name = ResourcesUtils.getString(R.string.title_genres)
                 )
             ),
             ListItem(
                 type = ListItemTypes.TEXT,
                 id = "2",
                 data = FilmsHeader(
-                    name = ResourcesUtils.getString(R.string.films_title)
+                    name = ResourcesUtils.getString(R.string.title_films)
                 )
             )
         )

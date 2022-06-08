@@ -23,6 +23,6 @@ class GenresHeaderViewHolder(
     }
 
     private fun showTitleText() {
-        binding.tvRvTitle.text = genresHeader.name
+        binding.headerText.text = genresHeader.name
     }
 }

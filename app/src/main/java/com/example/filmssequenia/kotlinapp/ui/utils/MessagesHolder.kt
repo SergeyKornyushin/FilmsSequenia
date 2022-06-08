@@ -24,7 +24,7 @@ class MessagesHolder(
     fun showUnhiddenNetworkError(message: String, listener: () -> Unit) {
         snackBarHolder.showIndefiniteDurationMessage(
             message,
-            ResourcesUtils.getString(R.string.repeat_snackbar),
+            ResourcesUtils.getString(R.string.button_repeat_snackbar),
             object : SnackBarActionListener {
                 override fun onActionClick() {
                     listener()

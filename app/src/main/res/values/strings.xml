@@ -1,19 +1,5 @@
 <resources>
     <string name="app_name">FilmsTestSequenia</string>
-
-    <string name="error_no_internet_connection">Отсутствует подключение к сети</string>
-    <string name="error_unknown">Неопознанная ошибка</string>
-    <string name="error_slow_internet_connection">Медленное соединение</string>
-    <string name="error_data_parsing">Ошибка обработки данных</string>
-    <string name="error_server">Ошибка сервера</string>
-
-    <string name="unknown">Неизвестно</string>
-    <string name="genres_title">Жанры</string>
-    <string name="films_title">Фильмы</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="rating_source">КиноПоиск</string>
-    <string name="main_toolbar_title">Фильмы</string>
-    <string name="app_bar_provider_error">Activity must implement AppBarProvider</string>
-    <string name="repeat_snackbar">ПОВТОРИТЬ</string>
+    <string name="unknown">Нет данных</string>
 </resources>

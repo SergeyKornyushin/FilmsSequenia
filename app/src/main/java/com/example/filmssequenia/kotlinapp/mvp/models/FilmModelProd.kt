@@ -15,7 +15,10 @@ class FilmModelProd(
 
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
 
-    override fun getSelectedFilm(callback: FilmModel.GetFilmCallback, filmId: Int) {
+    /**
+     * Возвращает view entity Film
+     */
+    override fun getSelectedFilm(filmId: Int, callback: FilmModel.GetFilmCallback) {
         scope.launch {
             callback.onSuccess(
                 selectedFilmMapper.mapFilm(filmId)

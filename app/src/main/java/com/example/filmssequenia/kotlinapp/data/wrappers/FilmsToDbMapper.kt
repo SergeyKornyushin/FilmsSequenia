@@ -3,7 +3,7 @@ package com.example.filmssequenia.kotlinapp.data.wrappers
 import com.example.filmssequenia.R
 import com.example.filmssequenia.kotlinapp.data.entities.database.FilmDb
 import com.example.filmssequenia.kotlinapp.data.entities.network.FilmsDto
-import com.example.filmssequenia.kotlinapp.mvp.models.entities.ResponseMapper
+import com.example.filmssequenia.kotlinapp.mvp.models.base.ResponseMapper
 import com.example.filmssequenia.utils.ResourcesUtils
 
 /**

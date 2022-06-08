@@ -10,7 +10,7 @@
         android:id="@+id/filmsList"
         android:name="com.example.filmssequenia.kotlinapp.ui.fragments.FilmsListFragment"
         android:label="Главная"
-        tools:layout="@layout/fragment_films_list" >
+        tools:layout="@layout/films_list_fragment" >
         <action
             android:id="@+id/action_filmsList_to_filmPage"
             app:destination="@id/filmPage" />
@@ -19,7 +19,7 @@
         android:id="@+id/filmPage"
         android:name="com.example.filmssequenia.kotlinapp.ui.fragments.FilmPageFragment"
         android:label="{genresWithYear}"
-        tools:layout="@layout/fragment_film_page" >
+        tools:layout="@layout/film_page_fragment" >
         <argument
             android:name="film"
             app:argType="com.example.filmssequenia.kotlinapp.mvp.models.entities.Film" />

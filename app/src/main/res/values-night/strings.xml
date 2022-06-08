@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">FilmsTestSequenia</string>
     <string name="rating_source">КиноПоиск</string>
-    <string name="main_toolbar_title">Главная</string>
-    <string name="repeat_snackbar">ПОВТОРИТЬ</string>
+    <string name="unknown">Нет данных</string>
 </resources>

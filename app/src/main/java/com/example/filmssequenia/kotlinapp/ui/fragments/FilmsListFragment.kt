@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.filmssequenia.R
-import com.example.filmssequenia.databinding.FragmentFilmsListBinding
+import com.example.filmssequenia.databinding.FilmsListFragmentBinding
 import com.example.filmssequenia.kotlinapp.mvp.models.entities.Film
 import com.example.filmssequenia.kotlinapp.mvp.models.entities.Genre
 import com.example.filmssequenia.kotlinapp.mvp.presenters.FilmsPresenter
@@ -30,13 +30,13 @@ import org.koin.android.ext.android.get
  * Fragment с отображением списка фильмов и жанров
  */
 class FilmsListFragment :
-    BaseWithAppBarNavigationFragment(R.layout.fragment_films_list),
+    BaseWithAppBarNavigationFragment(R.layout.films_list_fragment),
     FilmsView,
     ScreenLocker,
     FilmViewHolder.FilmViewHolderListener,
     GenreViewHolder.GenreViewHolderListener {
 
-    private lateinit var binding: FragmentFilmsListBinding
+    private lateinit var binding: FilmsListFragmentBinding
     private var listExtension: ListExtension? = null
     private lateinit var adapter: RVAdapter
 
@@ -53,26 +53,26 @@ class FilmsListFragment :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = FragmentFilmsListBinding.bind(view)
+        binding = FilmsListFragmentBinding.bind(view)
         adapter = RVAdapter(layoutInflater)
         adapter.setListeners(this, this)
 
-        listExtension = ListExtension(binding.rvFilmsList)
+        listExtension = ListExtension(binding.filmsList)
         listExtension?.setAdapter(adapter)
 
         val gridLayoutManager = GridLayoutManager(context, 2)
         gridLayoutManager.spanSizeLookup = RVFilmsSpanSize(adapter)
         listExtension?.setLayoutManager(gridLayoutManager)
 
-        binding.rvFilmsList.itemAnimator = null
-        binding.rvFilmsList.addItemDecoration(
+        binding.filmsList.itemAnimator = null
+        binding.filmsList.addItemDecoration(
             GridSpacingItemDecoration(2, 36, true, 15, false)
         )
 
         appBarProvider?.setAppBarSettings(this)
         appBarProvider?.setCustomToolbarView(R.layout.centered_toolbar)
         (appBarProvider?.setCustomToolbarView(R.layout.centered_toolbar) as TextView)
-            .text = resources.getString(R.string.films_title)
+            .text = resources.getString(R.string.title_films)
     }
 
     override fun showFilms(films: List<ListItem>) {
@@ -85,12 +85,12 @@ class FilmsListFragment :
     }
 
     override fun startContentLoading() {
-        binding.pbDownload.isVisible = true
+        binding.downloadProgressBar.isVisible = true
         lockScreen()
     }
 
     override fun endContentLoading() {
-        binding.pbDownload.isVisible = false
+        binding.downloadProgressBar.isVisible = false
         unlockScreen()
     }
 

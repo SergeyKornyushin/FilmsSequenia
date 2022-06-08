@@ -8,10 +8,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="item_selected_color">#D7F6F8</color>
-    <color name="poster_background_color">#EFEFEF</color>
-    <color name="genre_text_color">#4B4B4B</color>
-    <color name="rating_text_color">#6936D6</color>
-    <color name="toolbar_color">#6936D6</color>
+    <color name="blue_d7f6f8">#D7F6F8</color>
+    <color name="white_ef">#EFEFEF</color>
+    <color name="gray_4b">#4B4B4B</color>
+    <color name="purple_6936d6">#6936D6</color>
 
 </resources>
