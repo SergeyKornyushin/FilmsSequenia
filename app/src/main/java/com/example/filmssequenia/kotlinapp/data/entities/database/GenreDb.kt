@@ -10,8 +10,4 @@ import androidx.room.PrimaryKey
 data class GenreDb(
     @PrimaryKey(autoGenerate = false)
     val genreName: String
-) {
-    companion object {
-        const val GENRE_NAME = "genreName"
-    }
-}
+)

@@ -8,11 +8,9 @@ fun Int?.avoidNullToString(string: String): String {
     return this?.toString() ?: string
 }
 
-/**
- * double так же приводится к формату 1 символ после запятой
- */
 fun Double?.avoidNullToString(string: String): String {
-    return if (this == null || this == -1.0) string else "%.1f".format(this)
+    return if (this == null || this == -1.0) string
+    else "%.1f".format(this).replace(",", ".")
 }
 
 fun String?.avoidNullToString(string: String): String {

@@ -1,4 +1,4 @@
-package com.example.filmssequenia.utils
+package com.example.filmssequenia.utils.keyboard_event
 
 /**
  * Слушатель на видимость клавиатуры

@@ -1,8 +1,9 @@
 package com.example.filmssequenia.kotlinapp.data.database.relations
 
 import androidx.room.Entity
-import com.example.filmssequenia.kotlinapp.data.entities.database.FilmDb.Companion.FILM_ID
-import com.example.filmssequenia.kotlinapp.data.entities.database.GenreDb.Companion.GENRE_NAME
+import com.example.filmssequenia.kotlinapp.data.constants.DataBaseConstants.FILM_ID
+import com.example.filmssequenia.kotlinapp.data.constants.DataBaseConstants.GENRE_NAME
+
 /**
  * Таблица many-to-many relationship
  * между GenreDb & FilmDb

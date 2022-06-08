@@ -4,8 +4,8 @@ import android.app.Activity
 import android.view.Window
 import androidx.annotation.LayoutRes
 import com.example.filmssequenia.kotlinapp.ui.utils.ScreenLocker
-import com.example.filmssequenia.utils.KeyboardEventManager
-import com.example.filmssequenia.utils.KeyboardVisibilityListener
+import com.example.filmssequenia.utils.keyboard_event.KeyboardEventManager
+import com.example.filmssequenia.utils.keyboard_event.KeyboardVisibilityListener
 import moxy.MvpAppCompatFragment
 
 /**

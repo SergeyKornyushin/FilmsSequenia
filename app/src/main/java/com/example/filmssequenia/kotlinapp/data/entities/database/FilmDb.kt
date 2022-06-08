@@ -16,8 +16,4 @@ data class FilmDb(
     val year: String,
     val rating: String,
     val description: String
-) {
-    companion object {
-        const val FILM_ID = "filmId"
-    }
-}
+)

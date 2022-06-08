@@ -20,8 +20,4 @@ import com.example.filmssequenia.kotlinapp.data.entities.database.GenreDb
 abstract class FilmsDataBase : RoomDatabase() {
 
     abstract fun filmsDao(): FilmsDao
-
-    companion object {
-        const val DATABASE_NAME = "films_db"
-    }
 }

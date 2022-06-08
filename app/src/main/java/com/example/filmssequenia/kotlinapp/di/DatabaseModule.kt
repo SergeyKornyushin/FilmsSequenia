@@ -2,6 +2,7 @@ package com.example.filmssequenia.kotlinapp.di
 
 import androidx.room.Room
 import com.example.filmssequenia.kotlinapp.application.App.Companion.context
+import com.example.filmssequenia.kotlinapp.data.constants.DataBaseConstants.DATABASE_NAME
 import com.example.filmssequenia.kotlinapp.data.database.FilmsDao
 import com.example.filmssequenia.kotlinapp.data.database.FilmsDataBase
 import org.koin.dsl.module
@@ -11,7 +12,7 @@ val databaseModule = module {
         Room.databaseBuilder(
             context,
             FilmsDataBase::class.java,
-            FilmsDataBase.DATABASE_NAME
+            DATABASE_NAME
         ).build()
     }
 

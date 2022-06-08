@@ -35,6 +35,7 @@ class FilmsModelProd(
             override fun onSuccess(response: FilmsDto?) {
                 if (response != null) {
                     scope.launch {
+                        filmsDao.clearAllTables()
                         mappersForSave.saveFilms(response, filmsDao)
                         callback.onSuccess(
                             mapperRvFiller.createListForRecyclerView(
