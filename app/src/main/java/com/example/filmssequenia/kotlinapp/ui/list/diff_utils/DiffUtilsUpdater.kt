@@ -1,4 +1,4 @@
-package com.example.filmssequenia.kotlinapp.ui.list.adapters.base
+package com.example.filmssequenia.kotlinapp.ui.list.diff_utils
 
 /**
  * Обновление списка с помощью DiffUtils

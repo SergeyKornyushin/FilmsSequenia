@@ -16,11 +16,12 @@ import com.example.filmssequenia.kotlinapp.ui.list.ListItem
 class FilmsPresenter(private val filmsModel: FilmsModel, private val filmModel: FilmModel) :
     BasePresenter<FilmsView>() {
 
-    init {
+    override fun onFirstViewAttach() {
+        super.onFirstViewAttach()
         getFilms()
     }
 
-    fun getFilms() {
+    private fun getFilms() {
         viewState.startContentLoading()
         (filmsModel as FilmsModelProd).getFilms(object : FilmsModel.GetFilmsCallback {
             override fun onSuccess(data: List<ListItem>) {
@@ -35,7 +36,7 @@ class FilmsPresenter(private val filmsModel: FilmsModel, private val filmModel: 
         })
     }
 
-    fun showFilmsByGenre(genre: Genre) {
+    fun onGenreClicked(genre: Genre) {
         (filmsModel as FilmsModelProd).getFilmsByGenre(
             genre = genre,
             callback = object : FilmsModel.GetFilmsCallback {
@@ -50,7 +51,7 @@ class FilmsPresenter(private val filmsModel: FilmsModel, private val filmModel: 
         )
     }
 
-    fun getFilm(filmId: Int) {
+    fun onFilmClicked(filmId: Int) {
         (filmModel as FilmModelProd).getSelectedFilm(
             filmId = filmId,
             callback = object : FilmModel.GetFilmCallback {
@@ -69,5 +70,9 @@ class FilmsPresenter(private val filmsModel: FilmsModel, private val filmModel: 
                 }
             }
         )
+    }
+
+    fun onRepeatButtonClicked() {
+        getFilms()
     }
 }

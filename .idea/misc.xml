@@ -18,6 +18,11 @@
         <entry key="app/src/main/res/layout/genre_item.xml" value="0.16614583333333333" />
         <entry key="app/src/main/res/layout/header_item.xml" value="0.27870370370370373" />
         <entry key="app/src/main/res/layout/main_activity.xml" value="0.16614583333333333" />
+        <entry key="app/src/main/res/layouts/activities/layout/main_activity.xml" value="0.15572916666666667" />
+        <entry key="app/src/main/res/layouts/appbars/toolbars/layout/centered_toolbar.xml" value="0.15572916666666667" />
+        <entry key="app/src/main/res/layouts/fragments/layout/films_list_fragment.xml" value="0.15572916666666667" />
+        <entry key="app/src/main/res/layouts/items/layout/film_item.xml" value="0.45" />
+        <entry key="app/src/main/res/layouts/items/layout/header_item.xml" value="0.15572916666666667" />
         <entry key="app/src/main/res/layouts/views/drawable/ic_image_not_found.xml" value="0.127" />
       </map>
     </option>

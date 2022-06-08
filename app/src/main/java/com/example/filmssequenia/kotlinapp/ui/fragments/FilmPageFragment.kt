@@ -23,13 +23,6 @@ class FilmPageFragment : BaseWithAppBarNavigationFragment(R.layout.film_page_fra
 
     private val args: FilmPageFragmentArgs by navArgs()
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-
-        appBarProvider = if (context is AppBarProvider) context
-        else throw RuntimeException(getString(R.string.error_app_bar_provider))
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FilmPageFragmentBinding.bind(view)

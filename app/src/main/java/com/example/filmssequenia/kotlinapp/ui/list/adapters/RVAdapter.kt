@@ -9,7 +9,8 @@ import com.example.filmssequenia.kotlinapp.mvp.models.entities.Genre
 import com.example.filmssequenia.kotlinapp.mvp.models.entities.GenresHeader
 import com.example.filmssequenia.kotlinapp.ui.list.ListItem
 import com.example.filmssequenia.kotlinapp.ui.list.adapters.base.BaseSequenceAdapter
-import com.example.filmssequenia.kotlinapp.ui.list.adapters.base.DiffUtilsUpdater
+import com.example.filmssequenia.kotlinapp.ui.list.diff_utils.DiffUtilsUpdater
+import com.example.filmssequenia.kotlinapp.ui.list.diff_utils.DiffCallback
 import com.example.filmssequenia.kotlinapp.ui.list.view_holders.*
 
 /**

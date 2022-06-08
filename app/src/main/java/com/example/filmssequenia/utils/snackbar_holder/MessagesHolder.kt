@@ -1,4 +1,4 @@
-package com.example.filmssequenia.kotlinapp.ui.utils
+package com.example.filmssequenia.utils.snackbar_holder
 
 import android.view.View
 import androidx.lifecycle.LifecycleOwner

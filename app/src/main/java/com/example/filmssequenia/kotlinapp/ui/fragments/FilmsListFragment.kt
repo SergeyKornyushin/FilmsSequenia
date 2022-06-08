@@ -15,13 +15,13 @@ import com.example.filmssequenia.kotlinapp.mvp.views.FilmsView
 import com.example.filmssequenia.kotlinapp.ui.fragments.base.BaseWithAppBarNavigationFragment
 import com.example.filmssequenia.kotlinapp.ui.list.ListItem
 import com.example.filmssequenia.kotlinapp.ui.list.adapters.RVAdapter
-import com.example.filmssequenia.kotlinapp.ui.list.adapters.RVFilmsSpanSize
+import com.example.filmssequenia.kotlinapp.ui.list.adapters.base.RVFilmsSpanSize
 import com.example.filmssequenia.kotlinapp.ui.list.adapters.base.GridSpacingItemDecoration
 import com.example.filmssequenia.kotlinapp.ui.list.adapters.base.ListExtension
 import com.example.filmssequenia.kotlinapp.ui.list.view_holders.FilmViewHolder
 import com.example.filmssequenia.kotlinapp.ui.list.view_holders.GenreViewHolder
-import com.example.filmssequenia.kotlinapp.ui.utils.MessagesHolder
-import com.example.filmssequenia.kotlinapp.ui.utils.ScreenLocker
+import com.example.filmssequenia.utils.snackbar_holder.MessagesHolder
+import com.example.filmssequenia.utils.ScreenLocker
 import com.sequenia.app_bar_provider.AppBarProvider
 import moxy.ktx.moxyPresenter
 import org.koin.android.ext.android.get
@@ -42,13 +42,6 @@ class FilmsListFragment :
 
     private val presenter by moxyPresenter {
         get<FilmsPresenter>()
-    }
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-
-        appBarProvider = if (context is AppBarProvider) context
-        else throw RuntimeException("Activity must implement AppBarProvider")
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -98,14 +91,14 @@ class FilmsListFragment :
         MessagesHolder(
             viewLifecycleOwner,
             binding.root
-        ).showUnhiddenNetworkError(error) { presenter.getFilms() }
+        ).showUnhiddenNetworkError(error) { presenter.onRepeatButtonClicked() }
     }
 
     override fun onFilmClick(filmId: Int) {
-        presenter.getFilm(filmId)
+        presenter.onFilmClicked(filmId)
     }
 
     override fun onGenreClick(genre: Genre) {
-        presenter.showFilmsByGenre(genre)
+        presenter.onGenreClicked(genre)
     }
 }

@@ -1,4 +1,4 @@
-package com.example.filmssequenia.kotlinapp.ui.list.adapters
+package com.example.filmssequenia.kotlinapp.ui.list.diff_utils
 
 import androidx.recyclerview.widget.DiffUtil
 import com.example.filmssequenia.kotlinapp.mvp.models.entities.Film

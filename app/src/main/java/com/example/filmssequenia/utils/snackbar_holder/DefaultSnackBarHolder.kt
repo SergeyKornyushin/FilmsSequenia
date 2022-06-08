@@ -1,7 +1,9 @@
-package com.example.filmssequenia.kotlinapp.ui.utils
+package com.example.filmssequenia.utils.snackbar_holder
 
 import android.view.View
 import androidx.lifecycle.LifecycleOwner
+import com.example.filmssequenia.utils.snackbar_holder.SnackBarActionListener
+import com.example.filmssequenia.utils.snackbar_holder.SnackBarHolder
 import com.google.android.material.snackbar.Snackbar
 
 /**

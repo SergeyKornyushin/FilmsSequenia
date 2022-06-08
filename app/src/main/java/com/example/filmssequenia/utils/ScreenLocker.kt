@@ -1,4 +1,4 @@
-package com.example.filmssequenia.kotlinapp.ui.utils
+package com.example.filmssequenia.utils
 
 import android.view.Window
 import android.view.WindowManager

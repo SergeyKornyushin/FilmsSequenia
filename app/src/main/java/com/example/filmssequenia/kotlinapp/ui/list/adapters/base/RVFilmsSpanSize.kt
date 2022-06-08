@@ -1,6 +1,7 @@
-package com.example.filmssequenia.kotlinapp.ui.list.adapters
+package com.example.filmssequenia.kotlinapp.ui.list.adapters.base
 
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.filmssequenia.kotlinapp.ui.list.adapters.RVAdapter
 
 /**
  * Определяет сколько column будет занимать элемент
