@@ -6,6 +6,9 @@ import com.example.filmssequenia.R
 import com.example.filmssequenia.databinding.GenreItemBinding
 import com.example.filmssequenia.kotlinapp.mvp.models.entities.Genre
 
+/**
+ * ViewHolder для Genre
+ */
 class GenreViewHolder(
     layoutInflater: LayoutInflater,
     parent: ViewGroup
@@ -33,6 +36,9 @@ class GenreViewHolder(
         }
     }
 
+    /**
+     * Слушатель нажатий GenreViewHolder
+     */
     interface GenreViewHolderListener {
         fun onGenreClick(genre: Genre)
     }

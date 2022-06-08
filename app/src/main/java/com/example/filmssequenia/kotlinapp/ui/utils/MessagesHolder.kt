@@ -1,6 +1,5 @@
 package com.example.filmssequenia.kotlinapp.ui.utils
 
-import android.view.LayoutInflater
 import android.view.View
 import androidx.lifecycle.LifecycleOwner
 import com.example.filmssequenia.R
@@ -30,7 +29,8 @@ class MessagesHolder(
                 override fun onActionClick() {
                     listener()
                 }
-            })
+            }
+        )
     }
 
     fun showMessage(message: String) {

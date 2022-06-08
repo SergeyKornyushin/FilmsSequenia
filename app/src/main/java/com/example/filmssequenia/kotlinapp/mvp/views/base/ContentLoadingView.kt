@@ -4,6 +4,9 @@ import moxy.viewstate.strategy.AddToEndSingleTagStrategy
 import moxy.viewstate.strategy.SingleStateStrategy
 import moxy.viewstate.strategy.StateStrategyType
 
+/**
+ * Интерфейс для экраном с загрузкой данных
+ */
 interface ContentLoadingView : BaseView {
 
     /**
@@ -28,4 +31,3 @@ interface ContentLoadingView : BaseView {
     @StateStrategyType(AddToEndSingleTagStrategy::class)
     fun showContentLoadingError(error: String)
 }
-

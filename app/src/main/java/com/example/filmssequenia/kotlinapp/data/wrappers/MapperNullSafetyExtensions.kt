@@ -1,5 +1,9 @@
 package com.example.filmssequenia.kotlinapp.data.wrappers
 
+/**
+ * Extension функции для фильтрации входящих "null"
+ * и приведению к заданному строковому значению
+ */
 fun Int?.avoidNullToString(string: String): String {
     return this?.toString() ?: string
 }

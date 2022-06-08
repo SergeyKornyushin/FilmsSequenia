@@ -10,7 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 /**
- * Manager по работе и настройки сетевых запросов
+ * Manager по работе и настройке сетевых запросов
  */
 class NetworkManager(
     private val baseUrl: String,
@@ -43,8 +43,6 @@ class NetworkManager(
         if (BuildConfig.DEBUG) {
             okHttpClient.addNetworkInterceptor(getInterceptorLogging())
         }
-
-//        okHttpClient.addInterceptor(HeadersInterceptor())
     }
 
     private fun getInterceptorLogging(): Interceptor {

@@ -1,6 +1,5 @@
 package com.example.filmssequenia.kotlinapp.mvp.presenters
 
-import android.util.Log
 import com.example.filmssequenia.kotlinapp.mvp.models.FilmModel
 import com.example.filmssequenia.kotlinapp.mvp.models.FilmModelProd
 import com.example.filmssequenia.kotlinapp.mvp.models.FilmsModel
@@ -10,8 +9,10 @@ import com.example.filmssequenia.kotlinapp.mvp.models.entities.Genre
 import com.example.filmssequenia.kotlinapp.mvp.presenters.base.BasePresenter
 import com.example.filmssequenia.kotlinapp.mvp.views.FilmsView
 import com.example.filmssequenia.kotlinapp.ui.list.ListItem
-import java.lang.StringBuilder
 
+/**
+ * Презентер для работы с FilmsPage view
+ */
 class FilmsPresenter(private val filmsModel: FilmsModel, private val filmModel: FilmModel) :
     BasePresenter<FilmsView>() {
 
@@ -45,7 +46,8 @@ class FilmsPresenter(private val filmsModel: FilmsModel, private val filmModel: 
                 override fun onError(error: String) {
                     viewState.showContentLoadingError(error)
                 }
-            })
+            }
+        )
     }
 
     fun getFilm(filmId: Int) {

@@ -43,7 +43,7 @@ class PicassoImageLoader : ImageLoader {
         requestCreator
             .fit()
             .centerInside()
-        return this;
+        return this
     }
 
     override fun placeholder(placeholderDrawable: Drawable): ImageLoader {
@@ -72,15 +72,18 @@ class PicassoImageLoader : ImageLoader {
     }
 
     override fun into(imageView: ImageView, callback: ImageLoaderListener?) {
-        requestCreator.into(imageView, object : Callback {
-            override fun onError(e: Exception?) {
-                callback?.onError(e.toString())
-            }
+        requestCreator.into(
+            imageView,
+            object : Callback {
+                override fun onError(e: Exception?) {
+                    callback?.onError(e.toString())
+                }
 
-            override fun onSuccess() {
-                callback?.onSuccess()
+                override fun onSuccess() {
+                    callback?.onSuccess()
+                }
             }
-        })
+        )
     }
 
     override fun load(url: String?): ImageLoader {

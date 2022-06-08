@@ -1,7 +1,7 @@
 package com.example.filmssequenia.kotlinapp.mvp.models
 
 import com.example.filmssequenia.kotlinapp.data.database.FilmsDao
-import com.example.filmssequenia.kotlinapp.data.entities.FilmsDto
+import com.example.filmssequenia.kotlinapp.data.entities.network.FilmsDto
 import com.example.filmssequenia.kotlinapp.data.network.ApiService
 import com.example.filmssequenia.kotlinapp.data.network.NetworkCallback
 import com.example.filmssequenia.kotlinapp.data.wrappers.MappersSet
@@ -13,6 +13,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
 
+/**
+ * Реализация модели FilmsModel
+ */
 class FilmsModelProd(
     private val apiFilms: ApiService,
     private val filmsDao: FilmsDao,
@@ -20,6 +23,7 @@ class FilmsModelProd(
     private val mapperRvFiller: DomainListFiller
 ) : FilmsModel {
 
+    // todo create dispatchers DI
     val scope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
 
     override fun getFilms(callback: FilmsModel.GetFilmsCallback) {

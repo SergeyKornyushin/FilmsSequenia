@@ -1,19 +1,20 @@
 package com.example.filmssequenia.kotlinapp.data.network
 
-
 import okhttp3.Headers
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-
+/**
+ * Callback для работы с ответами с сервера
+ */
 interface NetworkCallback<Type> : Callback<Type> {
 
     override fun onResponse(call: Call<Type>, response: Response<Type>) {
         if (response.isSuccessful) {
             onSuccess(response.body(), response.headers())
         } else {
-            handleError(response);
+            handleError(response)
         }
     }
 

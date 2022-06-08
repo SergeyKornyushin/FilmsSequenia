@@ -2,10 +2,8 @@ package com.example.filmssequenia.utils
 
 import android.content.Context
 import android.util.AttributeSet
-import android.util.Log
 import android.view.View
 import android.widget.TextView
-import androidx.core.view.size
 import com.example.filmssequenia.R
 import com.google.android.material.appbar.MaterialToolbar
 

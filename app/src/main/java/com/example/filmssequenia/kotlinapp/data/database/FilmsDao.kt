@@ -4,9 +4,12 @@ import androidx.room.*
 import com.example.filmssequenia.kotlinapp.data.database.relations.FilmWithGenres
 import com.example.filmssequenia.kotlinapp.data.database.relations.FilmsGenresCrossRef
 import com.example.filmssequenia.kotlinapp.data.database.relations.GenreWithFilms
-import com.example.filmssequenia.kotlinapp.data.entities.FilmDb
-import com.example.filmssequenia.kotlinapp.data.entities.GenreDb
+import com.example.filmssequenia.kotlinapp.data.entities.database.FilmDb
+import com.example.filmssequenia.kotlinapp.data.entities.database.GenreDb
 
+/**
+ * Команды для работы с RoomDatabase
+ */
 @Dao
 interface FilmsDao {
 
@@ -49,7 +52,7 @@ interface FilmsDao {
     suspend fun clearFilmsGenresCrossRefTable()
 
     @Transaction
-    suspend fun clearAllTables(){
+    suspend fun clearAllTables() {
         clearFilmsTable()
         clearGenresTable()
         clearFilmsGenresCrossRefTable()

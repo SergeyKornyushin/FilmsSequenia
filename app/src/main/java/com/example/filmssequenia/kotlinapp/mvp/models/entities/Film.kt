@@ -3,6 +3,9 @@ package com.example.filmssequenia.kotlinapp.mvp.models.entities
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
+/**
+ * Entity для работы во view
+ */
 @Parcelize
 data class Film(
     val filmId: Int,

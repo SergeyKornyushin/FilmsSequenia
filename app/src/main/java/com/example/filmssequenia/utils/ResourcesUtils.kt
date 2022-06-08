@@ -10,6 +10,9 @@ import androidx.core.content.ContextCompat
 import com.example.filmssequenia.kotlinapp.application.App
 import java.util.*
 
+/**
+ * Доступ к ресурсам в любом места приложения
+ */
 object ResourcesUtils {
 
     private val DEFAULT_APP_LOCALE: Locale = Locale("ru")

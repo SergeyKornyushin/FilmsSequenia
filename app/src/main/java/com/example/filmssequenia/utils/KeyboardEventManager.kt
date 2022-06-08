@@ -64,7 +64,9 @@ class KeyboardEventManager {
      * @param listener       слушатель видимости клавиатуры
      */
     fun setKeyboardVisibilityListener(
-        activity: Activity?, lifecycleOwner: LifecycleOwner, listener: KeyboardVisibilityListener
+        activity: Activity?,
+        lifecycleOwner: LifecycleOwner,
+        listener: KeyboardVisibilityListener
     ) {
         if (activity == null) {
             return

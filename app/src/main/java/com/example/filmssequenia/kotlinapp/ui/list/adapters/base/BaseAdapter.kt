@@ -55,15 +55,11 @@ abstract class BaseAdapter<ItemClass, VH : BaseViewHolder>(
         notifyItemInserted(position)
     }
 
-    override fun getItemViewType(position: Int): Int {
-        return super.getItemViewType(position)
-    }
-
     protected fun removeItemsByTypes(vararg types: Int) {
-        items = (items.filterIndexed { index, _ ->
+        items = items.filterIndexed { index, _ ->
             val type = getItemViewType(index)
             !types.contains(type)
-        }).toMutableList()
+        }.toMutableList()
 
         notifyDataSetChanged()
     }
@@ -76,9 +72,5 @@ abstract class BaseAdapter<ItemClass, VH : BaseViewHolder>(
     ) {
         this.items = items.toMutableList()
         diffResult.dispatchUpdatesTo(this)
-    }
-
-    protected companion object {
-        const val NOT_FOUND = -1
     }
 }

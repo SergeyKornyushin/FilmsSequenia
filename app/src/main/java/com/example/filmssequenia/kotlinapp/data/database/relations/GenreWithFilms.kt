@@ -3,11 +3,14 @@ package com.example.filmssequenia.kotlinapp.data.database.relations
 import androidx.room.Embedded
 import androidx.room.Junction
 import androidx.room.Relation
-import com.example.filmssequenia.kotlinapp.data.entities.FilmDb
-import com.example.filmssequenia.kotlinapp.data.entities.FilmDb.Companion.FILM_ID
-import com.example.filmssequenia.kotlinapp.data.entities.GenreDb
-import com.example.filmssequenia.kotlinapp.data.entities.GenreDb.Companion.GENRE_NAME
+import com.example.filmssequenia.kotlinapp.data.entities.database.FilmDb
+import com.example.filmssequenia.kotlinapp.data.entities.database.FilmDb.Companion.FILM_ID
+import com.example.filmssequenia.kotlinapp.data.entities.database.GenreDb
+import com.example.filmssequenia.kotlinapp.data.entities.database.GenreDb.Companion.GENRE_NAME
 
+/**
+ * Отношение Genre - Films
+ */
 data class GenreWithFilms(
     @Embedded val genreDb: GenreDb,
     @Relation(

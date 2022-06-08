@@ -25,7 +25,9 @@ class KeyboardVisibilityHolder {
      * @param listener       слушатель видимости клавиатуры
      */
     fun setListener(
-        activity: Activity, lifecycleOwner: LifecycleOwner, listener: KeyboardVisibilityListener
+        activity: Activity,
+        lifecycleOwner: LifecycleOwner,
+        listener: KeyboardVisibilityListener
     ) {
         val globalLayoutListener = getGlobalLayoutListener(activity, listener)
 
@@ -47,7 +49,8 @@ class KeyboardVisibilityHolder {
      * @param globalLayoutListener @[OnGlobalLayoutListener]
      */
     private fun addGlobalLayoutListener(
-        activity: Activity, globalLayoutListener: OnGlobalLayoutListener
+        activity: Activity,
+        globalLayoutListener: OnGlobalLayoutListener
     ) {
         getActivityRootView(activity)
             ?.viewTreeObserver
@@ -61,7 +64,8 @@ class KeyboardVisibilityHolder {
      * @param globalLayoutListener @[OnGlobalLayoutListener]
      */
     private fun removeGlobalLayoutListener(
-        activity: Activity, globalLayoutListener: OnGlobalLayoutListener
+        activity: Activity,
+        globalLayoutListener: OnGlobalLayoutListener
     ) {
         getActivityRootView(activity)
             ?.viewTreeObserver
@@ -76,7 +80,8 @@ class KeyboardVisibilityHolder {
      * @return @[OnGlobalLayoutListener]
      */
     private fun getGlobalLayoutListener(
-        activity: Activity, listener: KeyboardVisibilityListener
+        activity: Activity,
+        listener: KeyboardVisibilityListener
     ): OnGlobalLayoutListener {
 
         return object : OnGlobalLayoutListener {

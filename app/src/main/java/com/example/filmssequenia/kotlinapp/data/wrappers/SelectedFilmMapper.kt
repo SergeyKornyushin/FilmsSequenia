@@ -3,9 +3,16 @@ package com.example.filmssequenia.kotlinapp.data.wrappers
 import com.example.filmssequenia.kotlinapp.data.database.FilmsDao
 import com.example.filmssequenia.kotlinapp.mvp.models.entities.Film
 
+/**
+ * Маппер для преобразования entity базы данных
+ * в entity для работы во View
+ */
 interface SelectedFilmMapper {
     suspend fun mapFilm(filmId: Int): Film
 
+    /**
+     * Базовая реализация интерфейса SelectedFilmMapper
+     */
     class Base(
         private val filmsDao: FilmsDao,
     ) : SelectedFilmMapper {

@@ -10,6 +10,9 @@ import com.example.filmssequenia.utils.image_loader.PicassoLoaderCreator
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
+/**
+ * Класс Application
+ */
 class App : Application() {
 
     override fun onCreate() {

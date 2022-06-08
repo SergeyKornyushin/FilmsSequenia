@@ -6,11 +6,13 @@ import androidx.core.view.isVisible
 import com.example.filmssequenia.R
 import com.example.filmssequenia.databinding.FilmItemBinding
 import com.example.filmssequenia.kotlinapp.mvp.models.entities.Film
-import com.example.filmssequenia.utils.ResourcesUtils
 import com.example.filmssequenia.utils.image_loader.ImageLoader
 import com.example.filmssequenia.utils.image_loader.ImageLoaderListener
 
-open class FilmViewHolder(
+/**
+ * ViewHolder для Film
+ */
+class FilmViewHolder(
     layoutInflater: LayoutInflater,
     parent: ViewGroup
 ) : BaseViewHolder(layoutInflater, parent, R.layout.film_item) {
@@ -31,16 +33,18 @@ open class FilmViewHolder(
         if (film.image_url.isNotEmpty())
             ImageLoader
                 .load(film.image_url)
-                .into(binding.imgPoster, object : ImageLoaderListener{
-                    override fun onError(error: String) {
-                        binding.imgPosterNotFound.isVisible = true
-                    }
+                .into(
+                    binding.imgPoster,
+                    object : ImageLoaderListener {
+                        override fun onError(error: String) {
+                            binding.imgPosterNotFound.isVisible = true
+                        }
 
-                    override fun onSuccess() {
-                        binding.imgPosterNotFound.isVisible = false
+                        override fun onSuccess() {
+                            binding.imgPosterNotFound.isVisible = false
+                        }
                     }
-
-                })
+                )
         else {
             binding.imgPosterNotFound.isVisible = true
             binding.imgPoster.setImageDrawable(null)
@@ -53,6 +57,9 @@ open class FilmViewHolder(
         }
     }
 
+    /**
+     * Слушатель нажатий FilmViewHolder
+     */
     interface FilmViewHolderListener {
         fun onFilmClick(filmId: Int)
     }

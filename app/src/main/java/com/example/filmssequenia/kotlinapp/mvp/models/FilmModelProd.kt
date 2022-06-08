@@ -6,6 +6,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
 
+/**
+ * Реализация модели FilmModel
+ */
 class FilmModelProd(
     private val selectedFilmMapper: SelectedFilmMapper
 ) : FilmModel {

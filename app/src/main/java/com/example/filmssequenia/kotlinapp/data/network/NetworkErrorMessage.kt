@@ -4,6 +4,9 @@ import androidx.annotation.StringRes
 import com.example.filmssequenia.R
 import com.example.filmssequenia.utils.ResourcesUtils
 
+/**
+ * Сообщения с типами сетевых ошибок
+ */
 enum class NetworkErrorMessage {
     SERVER_ERROR {
         override fun getStringRes(): Int {

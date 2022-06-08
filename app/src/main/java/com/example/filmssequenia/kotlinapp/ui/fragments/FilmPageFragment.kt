@@ -15,6 +15,9 @@ import com.example.filmssequenia.utils.image_loader.ImageLoader
 import com.example.filmssequenia.utils.image_loader.ImageLoaderListener
 import com.sequenia.app_bar_provider.AppBarProvider
 
+/**
+ * Fragment с отображением детальной информации о фильме
+ */
 class FilmPageFragment : BaseWithAppBarNavigationFragment(R.layout.fragment_film_page), FilmView {
     private lateinit var binding: FragmentFilmPageBinding
 
@@ -45,15 +48,18 @@ class FilmPageFragment : BaseWithAppBarNavigationFragment(R.layout.fragment_film
             if (film.image_url.isNotEmpty())
                 ImageLoader
                     .load(film.image_url)
-                    .into(imgFilmPoster, object : ImageLoaderListener {
-                        override fun onError(error: String) {
-                            imgFilmPosterNotFound.isVisible = true
-                        }
+                    .into(
+                        imgFilmPoster,
+                        object : ImageLoaderListener {
+                            override fun onError(error: String) {
+                                imgFilmPosterNotFound.isVisible = true
+                            }
 
-                        override fun onSuccess() {
-                            imgFilmPosterNotFound.isVisible = false
+                            override fun onSuccess() {
+                                imgFilmPosterNotFound.isVisible = false
+                            }
                         }
-                    })
+                    )
             else imgFilmPosterNotFound.isVisible = true
 
             tvFilmTitle.text = film.localized_name

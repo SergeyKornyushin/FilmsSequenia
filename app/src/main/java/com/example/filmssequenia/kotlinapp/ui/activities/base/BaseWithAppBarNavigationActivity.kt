@@ -16,7 +16,8 @@ import com.sequenia.app_bar_provider.AppBarViews
  */
 abstract class BaseWithAppBarNavigationActivity(
     @LayoutRes contentLayoutId: Int = R.layout.activity_main
-) : BaseNavigationActivity(contentLayoutId), AppBarProvider,
+) : BaseNavigationActivity(contentLayoutId),
+    AppBarProvider,
     AppBarViews {
 
     private lateinit var appBarProvider: AppBarProviderImp

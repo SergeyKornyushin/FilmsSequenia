@@ -7,6 +7,10 @@ import java.net.SocketException
 import java.net.SocketTimeoutException
 import java.net.UnknownHostException
 
+/**
+ * Object для получения сообщений сетевых ошибок
+ * с любого места в application
+ */
 object NetworkErrors {
 
     /**

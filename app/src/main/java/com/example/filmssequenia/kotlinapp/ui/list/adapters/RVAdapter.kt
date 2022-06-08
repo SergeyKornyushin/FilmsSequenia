@@ -2,7 +2,6 @@ package com.example.filmssequenia.kotlinapp.ui.list.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import com.example.filmssequenia.kotlinapp.mvp.models.entities.Film
 import com.example.filmssequenia.kotlinapp.mvp.models.entities.FilmsHeader
@@ -13,13 +12,23 @@ import com.example.filmssequenia.kotlinapp.ui.list.adapters.base.BaseSequenceAda
 import com.example.filmssequenia.kotlinapp.ui.list.adapters.base.DiffUtilsUpdater
 import com.example.filmssequenia.kotlinapp.ui.list.view_holders.*
 
+/**
+ * RecyclerView Adapter для FilmsList view
+ */
 class RVAdapter(layoutInflater: LayoutInflater) :
     BaseSequenceAdapter<ListItem, BaseViewHolder>(layoutInflater), DiffUtilsUpdater<ListItem> {
 
     private lateinit var filmViewHolderListener: FilmViewHolder.FilmViewHolderListener
     private lateinit var genreViewHolderListener: GenreViewHolder.GenreViewHolderListener
+    override val typesSequence: IntArray
+        get() = intArrayOf(
+            TYPE_GENRES_HEADER,
+            TYPE_GENRE,
+            TYPE_FILMS_HEADER,
+            TYPE_FILM
+        )
 
-    fun setAdapters(
+    fun setListeners(
         filmViewHolderListener: FilmViewHolder.FilmViewHolderListener,
         genreViewHolderListener: GenreViewHolder.GenreViewHolderListener
     ) {
@@ -46,7 +55,8 @@ class RVAdapter(layoutInflater: LayoutInflater) :
                 (holder as GenreViewHolder).bind(
                     items[position].data as Genre, genreViewHolderListener
                 )
-            TYPE_FILMS_HEADER -> (holder as FilmsHeaderViewHolder).bind(items[position].data as FilmsHeader)
+            TYPE_FILMS_HEADER ->
+                (holder as FilmsHeaderViewHolder).bind(items[position].data as FilmsHeader)
             TYPE_FILM -> (holder as FilmViewHolder).bind(
                 items[position].data as Film,
                 filmViewHolderListener
@@ -64,16 +74,9 @@ class RVAdapter(layoutInflater: LayoutInflater) :
         }
     }
 
-    override val typesSequence: IntArray
-        get() = intArrayOf(
-            TYPE_GENRES_HEADER,
-            TYPE_GENRE,
-            TYPE_FILMS_HEADER,
-            TYPE_FILM
-        )
-
-    private fun getItemViewType(item: ListItem, index: Int): Int {
-        return getItemViewType(item)
+    override fun updateWithDiffUtils(films: List<ListItem>) {
+        val diff = DiffUtil.calculateDiff(DiffCallback(items, films))
+        updateItemsWithDiffUtil(films, diff)
     }
 
     private companion object {
@@ -81,10 +84,5 @@ class RVAdapter(layoutInflater: LayoutInflater) :
         const val TYPE_GENRE = 1
         const val TYPE_FILMS_HEADER = 2
         const val TYPE_FILM = 3
-    }
-
-    override fun updateWithDiffUtils(films: List<ListItem>) {
-        val diff = DiffUtil.calculateDiff(DiffCallback(items, films))
-        updateItemsWithDiffUtil(films, diff)
     }
 }

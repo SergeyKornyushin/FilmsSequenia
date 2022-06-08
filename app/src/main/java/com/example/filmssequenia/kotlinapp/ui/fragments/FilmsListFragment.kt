@@ -2,29 +2,22 @@ package com.example.filmssequenia.kotlinapp.ui.fragments
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.TextView
 import androidx.core.view.isVisible
-import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.SimpleItemAnimator
 import com.example.filmssequenia.R
 import com.example.filmssequenia.databinding.FragmentFilmsListBinding
 import com.example.filmssequenia.kotlinapp.mvp.models.entities.Film
 import com.example.filmssequenia.kotlinapp.mvp.models.entities.Genre
 import com.example.filmssequenia.kotlinapp.mvp.presenters.FilmsPresenter
 import com.example.filmssequenia.kotlinapp.mvp.views.FilmsView
-import com.example.filmssequenia.kotlinapp.ui.activities.MainActivity
-import com.example.filmssequenia.kotlinapp.ui.fragments.base.BaseFragment
-import com.example.filmssequenia.kotlinapp.ui.fragments.base.BaseNavigationFragment
 import com.example.filmssequenia.kotlinapp.ui.fragments.base.BaseWithAppBarNavigationFragment
 import com.example.filmssequenia.kotlinapp.ui.list.ListItem
-import com.example.filmssequenia.kotlinapp.ui.list.adapters.base.ListExtension
 import com.example.filmssequenia.kotlinapp.ui.list.adapters.RVAdapter
 import com.example.filmssequenia.kotlinapp.ui.list.adapters.RVFilmsSpanSize
-import com.example.filmssequenia.kotlinapp.ui.list.adapters.base.CustomItemAnimator
 import com.example.filmssequenia.kotlinapp.ui.list.adapters.base.GridSpacingItemDecoration
+import com.example.filmssequenia.kotlinapp.ui.list.adapters.base.ListExtension
 import com.example.filmssequenia.kotlinapp.ui.list.view_holders.FilmViewHolder
 import com.example.filmssequenia.kotlinapp.ui.list.view_holders.GenreViewHolder
 import com.example.filmssequenia.kotlinapp.ui.utils.MessagesHolder
@@ -33,9 +26,15 @@ import com.sequenia.app_bar_provider.AppBarProvider
 import moxy.ktx.moxyPresenter
 import org.koin.android.ext.android.get
 
-class FilmsListFragment : BaseWithAppBarNavigationFragment(R.layout.fragment_films_list), FilmsView,
+/**
+ * Fragment с отображением списка фильмов и жанров
+ */
+class FilmsListFragment :
+    BaseWithAppBarNavigationFragment(R.layout.fragment_films_list),
+    FilmsView,
     ScreenLocker,
-    FilmViewHolder.FilmViewHolderListener, GenreViewHolder.GenreViewHolderListener {
+    FilmViewHolder.FilmViewHolderListener,
+    GenreViewHolder.GenreViewHolderListener {
 
     private lateinit var binding: FragmentFilmsListBinding
     private var listExtension: ListExtension? = null
@@ -52,12 +51,11 @@ class FilmsListFragment : BaseWithAppBarNavigationFragment(R.layout.fragment_fil
         else throw RuntimeException("Activity must implement AppBarProvider")
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentFilmsListBinding.bind(view)
         adapter = RVAdapter(layoutInflater)
-        adapter.setAdapters(this, this)
+        adapter.setListeners(this, this)
 
         listExtension = ListExtension(binding.rvFilmsList)
         listExtension?.setAdapter(adapter)

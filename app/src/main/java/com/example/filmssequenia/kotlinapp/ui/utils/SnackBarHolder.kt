@@ -20,11 +20,13 @@ abstract class SnackBarHolder(
     private var currentSnackBar: Snackbar? = null
 
     init {
-        lifecycleOwner.lifecycle.addObserver(LifecycleEventObserver { _, event ->
-            if (event == Lifecycle.Event.ON_DESTROY) {
-                hideMessage()
+        lifecycleOwner.lifecycle.addObserver(
+            LifecycleEventObserver { _, event ->
+                if (event == Lifecycle.Event.ON_DESTROY) {
+                    hideMessage()
+                }
             }
-        })
+        )
     }
 
     protected abstract fun createSnackBar(

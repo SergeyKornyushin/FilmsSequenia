@@ -6,7 +6,10 @@ import com.example.filmssequenia.R
 import com.example.filmssequenia.databinding.HeaderItemBinding
 import com.example.filmssequenia.kotlinapp.mvp.models.entities.FilmsHeader
 
-open class FilmsHeaderViewHolder(
+/**
+ * ViewHolder для заголовка блока с Films
+ */
+class FilmsHeaderViewHolder(
     layoutInflater: LayoutInflater,
     parent: ViewGroup
 ) : BaseViewHolder(layoutInflater, parent, R.layout.header_item) {

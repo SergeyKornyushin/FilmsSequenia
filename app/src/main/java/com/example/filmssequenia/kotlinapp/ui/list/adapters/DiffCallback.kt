@@ -7,6 +7,9 @@ import com.example.filmssequenia.kotlinapp.mvp.models.entities.Genre
 import com.example.filmssequenia.kotlinapp.mvp.models.entities.GenresHeader
 import com.example.filmssequenia.kotlinapp.ui.list.ListItem
 
+/**
+ * Callback DiffUtils для RVAdapter
+ */
 class DiffCallback(private val oldItems: List<ListItem>, private val newItems: List<ListItem>) :
     DiffUtil.Callback() {
 
@@ -15,23 +18,22 @@ class DiffCallback(private val oldItems: List<ListItem>, private val newItems: L
     override fun getNewListSize(): Int = newItems.size
 
     override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-        val isSameGenre = oldItems[oldItemPosition].data is Genre
-                && newItems[newItemPosition].data is Genre
-//                && oldItems[oldItemPosition].data == newItems[newItemPosition].data
+        val isSameGenre =
+            oldItems[oldItemPosition].data is Genre && newItems[newItemPosition].data is Genre
 
-        val isSameFilm = oldItems[oldItemPosition].data is Film
-                && newItems[newItemPosition].data is Film
-                && oldItems[oldItemPosition].id == newItems[newItemPosition].id
+        val isSameFilm =
+            oldItems[oldItemPosition].data is Film && newItems[newItemPosition].data is Film &&
+                oldItems[oldItemPosition].id == newItems[newItemPosition].id
 
         val isSameGenresHeader =
-            oldItems[oldItemPosition].data is GenresHeader
-                    && newItems[newItemPosition].data is GenresHeader
-                    && oldItems[oldItemPosition].id == newItems[newItemPosition].id
+            oldItems[oldItemPosition].data is GenresHeader &&
+                newItems[newItemPosition].data is GenresHeader &&
+                oldItems[oldItemPosition].id == newItems[newItemPosition].id
 
         val isSameFilmsHeader =
-            oldItems[oldItemPosition].data is FilmsHeader
-                    && newItems[newItemPosition].data is FilmsHeader
-                    && oldItems[oldItemPosition].id == newItems[newItemPosition].id
+            oldItems[oldItemPosition].data is FilmsHeader &&
+                newItems[newItemPosition].data is FilmsHeader &&
+                oldItems[oldItemPosition].id == newItems[newItemPosition].id
 
         return isSameGenre || isSameFilm || isSameGenresHeader || isSameFilmsHeader
     }

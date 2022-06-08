@@ -11,22 +11,6 @@ import java.io.File
  */
 interface ImageLoader {
 
-    companion object {
-        lateinit var loaderCreator: LoaderCreator
-
-        fun load(url: String?): ImageLoader {
-            return loaderCreator.getInstance(App.context).load(url)
-        }
-
-        fun load(file: File): ImageLoader {
-            return loaderCreator.getInstance(App.context).load(file)
-        }
-
-        fun load(@DrawableRes resourceId: Int): ImageLoader {
-            return loaderCreator.getInstance(App.context).load(resourceId)
-        }
-    }
-
     fun centerCrop(): ImageLoader
 
     fun roundedCorners(roundingRadius: Int): ImageLoader
@@ -52,4 +36,20 @@ interface ImageLoader {
     fun load(file: File): ImageLoader
 
     fun load(@DrawableRes resourceId: Int): ImageLoader
+
+    companion object {
+        lateinit var loaderCreator: LoaderCreator
+
+        fun load(url: String?): ImageLoader {
+            return loaderCreator.getInstance(App.context).load(url)
+        }
+
+        fun load(file: File): ImageLoader {
+            return loaderCreator.getInstance(App.context).load(file)
+        }
+
+        fun load(@DrawableRes resourceId: Int): ImageLoader {
+            return loaderCreator.getInstance(App.context).load(resourceId)
+        }
+    }
 }

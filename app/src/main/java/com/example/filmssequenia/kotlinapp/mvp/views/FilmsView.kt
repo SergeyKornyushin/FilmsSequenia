@@ -7,7 +7,10 @@ import moxy.viewstate.strategy.AddToEndSingleStrategy
 import moxy.viewstate.strategy.OneExecutionStateStrategy
 import moxy.viewstate.strategy.StateStrategyType
 
-interface FilmsView : ContentLoadingView{
+/**
+ * Интерфейс для FilmsPage view
+ */
+interface FilmsView : ContentLoadingView {
 
     @StateStrategyType(AddToEndSingleStrategy::class)
     fun showFilms(films: List<ListItem>)

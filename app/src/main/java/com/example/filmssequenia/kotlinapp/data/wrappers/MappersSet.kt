@@ -1,11 +1,17 @@
 package com.example.filmssequenia.kotlinapp.data.wrappers
 
 import com.example.filmssequenia.kotlinapp.data.database.FilmsDao
-import com.example.filmssequenia.kotlinapp.data.entities.FilmsDto
+import com.example.filmssequenia.kotlinapp.data.entities.network.FilmsDto
 
+/**
+ * Набор мапперов для сохранения сетевого ответа в базу данных
+ */
 interface MappersSet {
     suspend fun saveFilms(networkFilms: FilmsDto, filmsDao: FilmsDao)
 
+    /**
+     * Базовая реализация интерфейса MappersSet
+     */
     data class Base(
         private val filmsToDbMapper: FilmsToDbMapper,
         private val genresToDbMapper: GenresToDbMapper,

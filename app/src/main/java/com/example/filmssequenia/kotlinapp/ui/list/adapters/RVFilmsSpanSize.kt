@@ -2,6 +2,10 @@ package com.example.filmssequenia.kotlinapp.ui.list.adapters
 
 import androidx.recyclerview.widget.GridLayoutManager
 
+/**
+ * Определяет сколько column будет занимать элемент
+ * конкретного типа в RecyclerView
+ */
 class RVFilmsSpanSize(private val rvAdapter: RVAdapter) : GridLayoutManager.SpanSizeLookup() {
 
     override fun getSpanSize(position: Int): Int {

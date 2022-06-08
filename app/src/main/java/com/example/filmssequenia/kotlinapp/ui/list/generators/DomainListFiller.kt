@@ -1,8 +1,8 @@
 package com.example.filmssequenia.kotlinapp.ui.list.generators
 
 import com.example.filmssequenia.R
-import com.example.filmssequenia.kotlinapp.data.entities.FilmDb
-import com.example.filmssequenia.kotlinapp.data.entities.GenreDb
+import com.example.filmssequenia.kotlinapp.data.entities.database.FilmDb
+import com.example.filmssequenia.kotlinapp.data.entities.database.GenreDb
 import com.example.filmssequenia.kotlinapp.mvp.models.entities.FilmsHeader
 import com.example.filmssequenia.kotlinapp.mvp.models.entities.Genre
 import com.example.filmssequenia.kotlinapp.mvp.models.entities.GenresHeader
@@ -10,6 +10,10 @@ import com.example.filmssequenia.kotlinapp.ui.list.ListItem
 import com.example.filmssequenia.kotlinapp.ui.list.ListItemTypes
 import com.example.filmssequenia.utils.ResourcesUtils
 
+/**
+ * Интерфейс с функцией наполнения конечного листа
+ * для RecyclerView
+ */
 interface DomainListFiller {
     suspend fun createListForRecyclerView(
         genres: List<GenreDb>,
@@ -17,6 +21,9 @@ interface DomainListFiller {
         genre: Genre?
     ): List<ListItem>
 
+    /**
+     * Базовая реализация DomainListFiller
+     */
     class Base(
         private val domainRVMapper: DomainRecyclerViewMapper
     ) : DomainListFiller {
@@ -45,7 +52,7 @@ interface DomainListFiller {
         ): List<ListItem> {
             val rvList: MutableList<ListItem> = mutableListOf()
             rvList.add(titles[GENRES_HEADER])
-            if (genre == null){
+            if (genre == null) {
                 rvList.addAll(domainRVMapper.mapGenresToDomain(genres))
             } else {
                 rvList.addAll(domainRVMapper.mapGenresWithSelect(genres, genre))
@@ -56,7 +63,7 @@ interface DomainListFiller {
         }
     }
 
-    private companion object{
+    private companion object {
         const val GENRES_HEADER = 0
         const val FILMS_HEADER = 1
     }

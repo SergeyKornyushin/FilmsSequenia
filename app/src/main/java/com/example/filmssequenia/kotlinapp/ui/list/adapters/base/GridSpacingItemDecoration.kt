@@ -1,22 +1,28 @@
 package com.example.filmssequenia.kotlinapp.ui.list.adapters.base
 
-import android.graphics.Canvas
 import android.graphics.Rect
-import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 
+/**
+ * ItemDecoration для создания равных отступов в
+ * RecyclerView с GridLayout
+ */
 class GridSpacingItemDecoration(
     private val spanCount: Int,
     private val spacing: Int,
     private val includeEdge: Boolean,
     private val headerNum: Int,
     private val isReverse: Boolean
-    ) : RecyclerView.ItemDecoration() {
+) : RecyclerView.ItemDecoration() {
 
-    override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
+    override fun getItemOffsets(
+        outRect: Rect,
+        view: View,
+        parent: RecyclerView,
+        state: RecyclerView.State
+    ) {
         val position = parent.getChildAdapterPosition(view) - headerNum
-
 
         if (position >= 0) {
             val column = position % spanCount

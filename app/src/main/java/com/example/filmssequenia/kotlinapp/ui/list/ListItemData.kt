@@ -1,6 +1,5 @@
 package com.example.filmssequenia.kotlinapp.ui.list
 
-
 import android.text.InputType
 
 /**

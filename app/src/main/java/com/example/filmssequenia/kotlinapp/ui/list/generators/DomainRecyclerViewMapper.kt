@@ -1,18 +1,25 @@
 package com.example.filmssequenia.kotlinapp.ui.list.generators
 
-import com.example.filmssequenia.kotlinapp.data.entities.FilmDb
-import com.example.filmssequenia.kotlinapp.data.entities.GenreDb
+import com.example.filmssequenia.kotlinapp.data.entities.database.FilmDb
+import com.example.filmssequenia.kotlinapp.data.entities.database.GenreDb
 import com.example.filmssequenia.kotlinapp.mvp.models.entities.Film
 import com.example.filmssequenia.kotlinapp.mvp.models.entities.Genre
 import com.example.filmssequenia.kotlinapp.ui.list.ListItem
 import com.example.filmssequenia.kotlinapp.ui.list.ListItemTypes
 
+/**
+ * Интерфейс с мапперами для преобразования
+ * entities database к entities для RecyclerView
+ */
 interface DomainRecyclerViewMapper {
 
     fun mapFilmsToDomain(filmsFromDb: List<FilmDb>): List<ListItem>
     fun mapGenresToDomain(genresFromDb: List<GenreDb>): List<ListItem>
     fun mapGenresWithSelect(genresFromDb: List<GenreDb>, selectedGenre: Genre): List<ListItem>
 
+    /**
+     * Базовая реализация DomainRecyclerViewMapper
+     */
     class Base : DomainRecyclerViewMapper {
         override fun mapFilmsToDomain(filmsFromDb: List<FilmDb>): List<ListItem> =
             filmsFromDb.map { film ->

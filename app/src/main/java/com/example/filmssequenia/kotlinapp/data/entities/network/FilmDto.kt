@@ -1,5 +1,8 @@
-package com.example.filmssequenia.kotlinapp.data.entities
+package com.example.filmssequenia.kotlinapp.data.entities.network
 
+/**
+ * Сущность Film с ответа с сервера
+ */
 data class FilmDto(
     val id: Int? = 0,
     val genres: MutableList<String>? = mutableListOf(""),
@@ -10,4 +13,3 @@ data class FilmDto(
     val rating: Double? = -1.0,
     val description: String? = ""
 )
-

@@ -32,7 +32,7 @@ abstract class BaseWithAppBarNavigationFragment(
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        appBarProvider?.setAppBarSettings(this);
+        appBarProvider?.setAppBarSettings(this)
     }
 
     override fun onDetach() {
