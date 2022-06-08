@@ -5,7 +5,6 @@
     style="@style/Roboto.Bold.Black_00.Size22.WW"
     android:layout_gravity="start"
     android:layout_marginTop="8dp"
-    android:background="@color/white_ff"
     android:paddingHorizontal="16dp"
     android:paddingVertical="8dp"
     tools:text="Title" />

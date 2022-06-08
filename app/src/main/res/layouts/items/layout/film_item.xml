@@ -5,22 +5,16 @@
     style="@style/LVMW">
 
     <androidx.cardview.widget.CardView
-        style="@style/MM"
-        android:background="@color/white"
+        style="@style/MM.BGWhite"
         app:cardCornerRadius="8dp">
 
         <ImageView
             android:id="@+id/film_poster_image"
-            android:layout_width="match_parent"
-            android:layout_height="256dp"
-            android:background="@color/white_ef"
-            android:scaleType="centerCrop" />
+            style="@style/M_H256.White_ef.Center_crop" />
 
         <ImageView
             android:id="@+id/poster_not_found_image"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
+            style="@style/W50_H50.Center"
             android:visibility="gone"
             app:srcCompat="@drawable/img_image_not_found" />
 
@@ -28,9 +22,7 @@
 
     <TextView
         android:id="@+id/film_name_text"
-        style="@style/Roboto.Bold.Black_00.Size16"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
+        style="@style/Roboto.Bold.Black_00.Size16.M_H40"
         android:layout_marginTop="8dp"
         android:ellipsize="end"
         android:gravity="start"

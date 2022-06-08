@@ -32,8 +32,7 @@
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/main_controller"
         android:name="androidx.navigation.fragment.NavHostFragment"
-        style="@style/MM"
-        android:background="@color/white"
+        style="@style/MM.BGWhite"
         app:defaultNavHost="true"
         app:navGraph="@navigation/nav_graph" />
 </LinearLayout>

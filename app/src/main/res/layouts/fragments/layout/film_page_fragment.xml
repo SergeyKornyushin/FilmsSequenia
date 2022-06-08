@@ -6,27 +6,20 @@
     android:padding="10dp"
     tools:context=".kotlinapp.ui.fragments.FilmPageFragment">
 
-    <LinearLayout
-        style="@style/LVMW"
-        android:orientation="vertical">
+    <LinearLayout style="@style/LVMW">
 
         <androidx.cardview.widget.CardView
-            style="@style/WW"
-            android:layout_gravity="center"
+            style="@style/WW.Center"
             app:cardCornerRadius="4dp">
 
             <ImageView
                 android:id="@+id/film_poster_image"
-                android:layout_width="150dp"
-                android:layout_height="220dp"
-                android:scaleType="centerCrop"
+                style="@style/W150_H220.Center_crop"
                 tools:src="@tools:sample/avatars" />
 
             <ImageView
                 android:id="@+id/poster_not_found_image"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center"
+                style="@style/W50_H50.Center"
                 app:srcCompat="@drawable/img_image_not_found"
                 tools:src="@tools:sample/avatars" />
         </androidx.cardview.widget.CardView>
@@ -56,7 +49,6 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="10dp"
                 tools:text="Kinopoisk" />
-
         </LinearLayout>
 
         <TextView
