@@ -1,10 +1,10 @@
 package com.example.filmssequenia.kotlinapp.ui.fragments
 
-import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import androidx.core.view.isVisible
+import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.filmssequenia.R
 import com.example.filmssequenia.databinding.FilmsListFragmentBinding
@@ -15,14 +15,12 @@ import com.example.filmssequenia.kotlinapp.mvp.views.FilmsView
 import com.example.filmssequenia.kotlinapp.ui.fragments.base.BaseWithAppBarNavigationFragment
 import com.example.filmssequenia.kotlinapp.ui.list.ListItem
 import com.example.filmssequenia.kotlinapp.ui.list.adapters.RVAdapter
-import com.example.filmssequenia.kotlinapp.ui.list.adapters.base.RVFilmsSpanSize
-import com.example.filmssequenia.kotlinapp.ui.list.adapters.base.GridSpacingItemDecoration
 import com.example.filmssequenia.kotlinapp.ui.list.adapters.base.ListExtension
+import com.example.filmssequenia.kotlinapp.ui.list.adapters.base.RVFilmsSpanSize
 import com.example.filmssequenia.kotlinapp.ui.list.view_holders.FilmViewHolder
 import com.example.filmssequenia.kotlinapp.ui.list.view_holders.GenreViewHolder
-import com.example.filmssequenia.utils.snackbar_holder.MessagesHolder
 import com.example.filmssequenia.utils.ScreenLocker
-import com.sequenia.app_bar_provider.AppBarProvider
+import com.example.filmssequenia.utils.snackbar_holder.MessagesHolder
 import moxy.ktx.moxyPresenter
 import org.koin.android.ext.android.get
 
@@ -47,25 +45,9 @@ class FilmsListFragment :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FilmsListFragmentBinding.bind(view)
-        adapter = RVAdapter(layoutInflater)
-        adapter.setListeners(this, this)
 
-        listExtension = ListExtension(binding.filmsList)
-        listExtension?.setAdapter(adapter)
-
-        val gridLayoutManager = GridLayoutManager(context, 2)
-        gridLayoutManager.spanSizeLookup = RVFilmsSpanSize(adapter)
-        listExtension?.setLayoutManager(gridLayoutManager)
-
-        binding.filmsList.itemAnimator = null
-        binding.filmsList.addItemDecoration(
-            GridSpacingItemDecoration(2, 36, true, 15, false)
-        )
-
-        appBarProvider?.setAppBarSettings(this)
-        appBarProvider?.setCustomToolbarView(R.layout.centered_toolbar)
-        (appBarProvider?.setCustomToolbarView(R.layout.centered_toolbar) as TextView)
-            .text = resources.getString(R.string.title_films)
+        initRecyclerViewAdapter()
+        initAppBarProvider()
     }
 
     override fun showFilms(films: List<ListItem>) {
@@ -100,5 +82,27 @@ class FilmsListFragment :
 
     override fun onGenreClick(genre: Genre) {
         presenter.onGenreClicked(genre)
+    }
+
+    private fun initRecyclerViewAdapter() {
+        adapter = RVAdapter(layoutInflater)
+        adapter.setListeners(this, this)
+
+        listExtension = ListExtension(binding.filmsList)
+        listExtension?.setAdapter(adapter)
+
+        val gridLayoutManager = GridLayoutManager(context, 2)
+        gridLayoutManager.spanSizeLookup = RVFilmsSpanSize(adapter)
+        listExtension?.setLayoutManager(gridLayoutManager)
+
+        val itemAnim = binding.filmsList.itemAnimator
+        (itemAnim as DefaultItemAnimator).supportsChangeAnimations = false
+    }
+
+    private fun initAppBarProvider() {
+        appBarProvider?.setAppBarSettings(this)
+        appBarProvider?.setCustomToolbarView(R.layout.centered_toolbar)
+        (appBarProvider?.setCustomToolbarView(R.layout.centered_toolbar) as TextView)
+            .text = resources.getString(R.string.title_films)
     }
 }

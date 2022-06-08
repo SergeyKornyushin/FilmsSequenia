@@ -9,8 +9,9 @@ import com.example.filmssequenia.kotlinapp.mvp.models.entities.Genre
 import com.example.filmssequenia.kotlinapp.mvp.models.entities.GenresHeader
 import com.example.filmssequenia.kotlinapp.ui.list.ListItem
 import com.example.filmssequenia.kotlinapp.ui.list.adapters.base.BaseSequenceAdapter
-import com.example.filmssequenia.kotlinapp.ui.list.diff_utils.DiffUtilsUpdater
+import com.example.filmssequenia.kotlinapp.ui.list.adapters.base.ColumnMarginDecorator
 import com.example.filmssequenia.kotlinapp.ui.list.diff_utils.DiffCallback
+import com.example.filmssequenia.kotlinapp.ui.list.diff_utils.DiffUtilsUpdater
 import com.example.filmssequenia.kotlinapp.ui.list.view_holders.*
 
 /**
@@ -28,14 +29,6 @@ class RVAdapter(layoutInflater: LayoutInflater) :
             TYPE_FILMS_HEADER,
             TYPE_FILM
         )
-
-    fun setListeners(
-        filmViewHolderListener: FilmViewHolder.FilmViewHolderListener,
-        genreViewHolderListener: GenreViewHolder.GenreViewHolderListener
-    ) {
-        this.filmViewHolderListener = filmViewHolderListener
-        this.genreViewHolderListener = genreViewHolderListener
-    }
 
     override fun getItemViewType(item: ListItem): Int {
         return when (item.data) {
@@ -60,7 +53,8 @@ class RVAdapter(layoutInflater: LayoutInflater) :
                 (holder as FilmsHeaderViewHolder).bind(items[position].data as FilmsHeader)
             TYPE_FILM -> (holder as FilmViewHolder).bind(
                 items[position].data as Film,
-                filmViewHolderListener
+                filmViewHolderListener,
+                ColumnMarginDecorator(items, position)
             )
         }
     }
@@ -78,6 +72,14 @@ class RVAdapter(layoutInflater: LayoutInflater) :
     override fun updateWithDiffUtils(films: List<ListItem>) {
         val diff = DiffUtil.calculateDiff(DiffCallback(items, films))
         updateItemsWithDiffUtil(films, diff)
+    }
+
+    fun setListeners(
+        filmViewHolderListener: FilmViewHolder.FilmViewHolderListener,
+        genreViewHolderListener: GenreViewHolder.GenreViewHolderListener
+    ) {
+        this.filmViewHolderListener = filmViewHolderListener
+        this.genreViewHolderListener = genreViewHolderListener
     }
 
     private companion object {

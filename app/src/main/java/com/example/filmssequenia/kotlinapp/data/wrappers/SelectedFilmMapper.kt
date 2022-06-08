@@ -8,7 +8,7 @@ import com.example.filmssequenia.kotlinapp.mvp.models.entities.Film
  * в entity для работы во View
  */
 interface SelectedFilmMapper {
-    suspend fun mapFilm(filmId: Int): Film
+    suspend fun getFilmById(filmId: Int): Film
 
     /**
      * Базовая реализация интерфейса SelectedFilmMapper
@@ -17,7 +17,7 @@ interface SelectedFilmMapper {
         private val filmsDao: FilmsDao,
     ) : SelectedFilmMapper {
 
-        override suspend fun mapFilm(filmId: Int): Film {
+        override suspend fun getFilmById(filmId: Int): Film {
             val filmFromDb = filmsDao.getFilmById(filmId)
             val filmGenresFromDb = filmsDao.getFilmWithGenres(filmId)
             val film = Film(

@@ -11,7 +11,7 @@ import com.example.filmssequenia.kotlinapp.ui.list.ListItemTypes
  * Интерфейс с мапперами для преобразования
  * entities database к entities для RecyclerView
  */
-interface DomainRecyclerViewMapper {
+interface RecyclerViewMapper {
 
     fun mapFilmsToDomain(filmsFromDb: List<FilmDb>): List<ListItem>
     fun mapGenresToDomain(genresFromDb: List<GenreDb>): List<ListItem>
@@ -20,7 +20,7 @@ interface DomainRecyclerViewMapper {
     /**
      * Базовая реализация DomainRecyclerViewMapper
      */
-    class Base : DomainRecyclerViewMapper {
+    class Base : RecyclerViewMapper {
         override fun mapFilmsToDomain(filmsFromDb: List<FilmDb>): List<ListItem> =
             filmsFromDb.map { film ->
                 ListItem(

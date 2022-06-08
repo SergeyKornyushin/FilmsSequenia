@@ -4,12 +4,13 @@ import com.example.filmssequenia.R
 import com.example.filmssequenia.kotlinapp.data.entities.database.FilmDb
 import com.example.filmssequenia.kotlinapp.data.entities.network.FilmsDto
 import com.example.filmssequenia.kotlinapp.mvp.models.base.ResponseMapper
+import com.example.filmssequenia.kotlinapp.ui.extentions.avoidNullToString
 import com.example.filmssequenia.utils.ResourcesUtils
 
 /**
  * Маппер сетевого entity к entity FilmDb базы даннах
  */
-class FilmsToDbMapper : ResponseMapper<FilmsDto, List<FilmDb>> {
+class FilmsDtoToDbMapper : ResponseMapper<FilmsDto, List<FilmDb>> {
     override fun map(films: FilmsDto): List<FilmDb> =
         films.filmsDto.map { film ->
             FilmDb(

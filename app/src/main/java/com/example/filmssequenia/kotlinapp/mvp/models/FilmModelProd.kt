@@ -1,19 +1,17 @@
 package com.example.filmssequenia.kotlinapp.mvp.models
 
 import com.example.filmssequenia.kotlinapp.data.wrappers.SelectedFilmMapper
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.SupervisorJob
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 
 /**
  * Реализация модели FilmModel
  */
 class FilmModelProd(
-    private val selectedFilmMapper: SelectedFilmMapper
+    private val selectedFilmMapper: SelectedFilmMapper,
+    coroutineDispatcher: CoroutineDispatcher
 ) : FilmModel {
 
-    private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
+    private val scope = CoroutineScope(SupervisorJob() + coroutineDispatcher)
 
     /**
      * Возвращает view entity Film
@@ -21,7 +19,7 @@ class FilmModelProd(
     override fun getSelectedFilm(filmId: Int, callback: FilmModel.GetFilmCallback) {
         scope.launch {
             callback.onSuccess(
-                selectedFilmMapper.mapFilm(filmId)
+                selectedFilmMapper.getFilmById(filmId)
             )
         }
     }

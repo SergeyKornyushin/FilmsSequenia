@@ -1,4 +1,4 @@
-package com.example.filmssequenia.kotlinapp.data.wrappers
+package com.example.filmssequenia.kotlinapp.ui.extentions
 
 /**
  * Extension функции для фильтрации входящих "null"

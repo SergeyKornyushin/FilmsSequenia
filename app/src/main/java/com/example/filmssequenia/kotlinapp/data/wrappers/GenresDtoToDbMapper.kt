@@ -7,7 +7,7 @@ import com.example.filmssequenia.kotlinapp.mvp.models.base.ResponseMapper
 /**
  * Маппер сетевого entity к entity GenreDb базы даннах
  */
-class GenresToDbMapper : ResponseMapper<FilmsDto, List<GenreDb>> {
+class GenresDtoToDbMapper : ResponseMapper<FilmsDto, List<GenreDb>> {
     override fun map(films: FilmsDto): List<GenreDb> {
         val hashSet = HashSet<String>()
         films.filmsDto.forEach { film ->

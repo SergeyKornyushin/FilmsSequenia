@@ -14,7 +14,7 @@ import com.example.filmssequenia.utils.ResourcesUtils
  * Интерфейс с функцией наполнения конечного листа
  * для RecyclerView
  */
-interface DomainListFiller {
+interface RecyclerViewListFiller {
     suspend fun createListForRecyclerView(
         genres: List<GenreDb>,
         films: List<FilmDb>,
@@ -25,8 +25,8 @@ interface DomainListFiller {
      * Базовая реализация DomainListFiller
      */
     class Base(
-        private val domainRVMapper: DomainRecyclerViewMapper
-    ) : DomainListFiller {
+        private val recyclerViewMapper: RecyclerViewMapper
+    ) : RecyclerViewListFiller {
 
         private val titles: List<ListItem> = listOf(
             ListItem(
@@ -53,12 +53,12 @@ interface DomainListFiller {
             val rvList: MutableList<ListItem> = mutableListOf()
             rvList.add(titles[GENRES_HEADER])
             if (genre == null) {
-                rvList.addAll(domainRVMapper.mapGenresToDomain(genres))
+                rvList.addAll(recyclerViewMapper.mapGenresToDomain(genres))
             } else {
-                rvList.addAll(domainRVMapper.mapGenresWithSelect(genres, genre))
+                rvList.addAll(recyclerViewMapper.mapGenresWithSelect(genres, genre))
             }
             rvList.add(titles[FILMS_HEADER])
-            rvList.addAll(domainRVMapper.mapFilmsToDomain(films))
+            rvList.addAll(recyclerViewMapper.mapFilmsToDomain(films))
             return rvList
         }
     }

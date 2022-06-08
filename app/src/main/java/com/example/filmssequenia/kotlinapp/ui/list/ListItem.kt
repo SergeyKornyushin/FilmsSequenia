@@ -19,4 +19,4 @@ data class Errors(var message: String)
 /**
  * Настройки объекта отображения
  */
-data class Settings(var settings: String = "")
+data class Settings(var column: Int)

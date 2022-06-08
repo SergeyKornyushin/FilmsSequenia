@@ -5,8 +5,10 @@ import com.example.filmssequenia.kotlinapp.mvp.models.FilmModel
 import com.example.filmssequenia.kotlinapp.mvp.models.FilmModelProd
 import com.example.filmssequenia.kotlinapp.mvp.models.FilmsModel
 import com.example.filmssequenia.kotlinapp.mvp.models.FilmsModelProd
-import com.example.filmssequenia.kotlinapp.ui.list.generators.DomainListFiller
-import com.example.filmssequenia.kotlinapp.ui.list.generators.DomainRecyclerViewMapper
+import com.example.filmssequenia.kotlinapp.ui.list.generators.RecyclerViewListFiller
+import com.example.filmssequenia.kotlinapp.ui.list.generators.RecyclerViewMapper
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 import org.koin.dsl.module
 
 val modelsModule = module {
@@ -15,33 +17,39 @@ val modelsModule = module {
             apiFilms = get(),
             mappersForSave = get(),
             filmsDao = get(),
-            mapperRvFiller = get()
+            mapperRecyclerViewFiller = get(),
+            coroutineDispatcher = get()
         )
     }
 
     factory<FilmModel> {
         FilmModelProd(
-            selectedFilmMapper = get()
+            selectedFilmMapper = get(),
+            coroutineDispatcher = get()
         )
     }
 
-    factory<MappersSet> {
-        MappersSet.Base(
-            FilmsToDbMapper(),
-            GenresToDbMapper(),
+    factory<DatabaseSaver> {
+        DatabaseSaver.Base(
+            FilmsDtoToDbMapper(),
+            GenresDtoToDbMapper(),
             FilmsGenresCrossRefMapper()
         )
     }
 
-    factory<DomainListFiller> {
-        DomainListFiller.Base(domainRVMapper = get())
+    factory<RecyclerViewListFiller> {
+        RecyclerViewListFiller.Base(recyclerViewMapper = get())
     }
 
-    factory<DomainRecyclerViewMapper> {
-        DomainRecyclerViewMapper.Base()
+    factory<RecyclerViewMapper> {
+        RecyclerViewMapper.Base()
     }
 
     factory<SelectedFilmMapper> {
         SelectedFilmMapper.Base(filmsDao = get())
+    }
+
+    factory<CoroutineDispatcher> {
+        Dispatchers.Main
     }
 }

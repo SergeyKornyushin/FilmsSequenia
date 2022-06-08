@@ -6,6 +6,7 @@ import androidx.core.view.isVisible
 import com.example.filmssequenia.R
 import com.example.filmssequenia.databinding.FilmItemBinding
 import com.example.filmssequenia.kotlinapp.mvp.models.entities.Film
+import com.example.filmssequenia.kotlinapp.ui.list.adapters.base.ColumnMarginDecorator
 import com.example.filmssequenia.utils.image_loader.ImageLoader
 import com.example.filmssequenia.utils.image_loader.ImageLoaderListener
 
@@ -20,10 +21,15 @@ class FilmViewHolder(
     private lateinit var film: Film
     private lateinit var listener: FilmViewHolderListener
 
-    fun bind(film: Film, listener: FilmViewHolderListener) {
+    fun bind(
+        film: Film,
+        listener: FilmViewHolderListener,
+        columnMarginDecorator: ColumnMarginDecorator
+    ) {
         this.film = film
         this.listener = listener
 
+        columnMarginDecorator.setColumnMargins(itemView)
         showFilmInfo()
         setListener()
     }

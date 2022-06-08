@@ -6,24 +6,24 @@ import com.example.filmssequenia.kotlinapp.data.entities.network.FilmsDto
 /**
  * Набор мапперов для сохранения сетевого ответа в базу данных
  */
-interface MappersSet {
+interface DatabaseSaver {
     suspend fun saveFilms(networkFilms: FilmsDto, filmsDao: FilmsDao)
 
     /**
      * Базовая реализация интерфейса MappersSet
      */
     data class Base(
-        private val filmsToDbMapper: FilmsToDbMapper,
-        private val genresToDbMapper: GenresToDbMapper,
+        private val filmsDtoToDbMapper: FilmsDtoToDbMapper,
+        private val genresDtoToDbMapper: GenresDtoToDbMapper,
         private val filmsGenresCrossRefMapper: FilmsGenresCrossRefMapper
-    ) : MappersSet {
+    ) : DatabaseSaver {
         override suspend fun saveFilms(
             networkFilms: FilmsDto,
             filmsDao: FilmsDao
         ) {
             filmsDao.clearAllTables()
-            filmsToDbMapper.map(networkFilms).forEach { filmsDao.insertFilm(it) }
-            genresToDbMapper.map(networkFilms).forEach { filmsDao.insertGenre(it) }
+            filmsDtoToDbMapper.map(networkFilms).forEach { filmsDao.insertFilm(it) }
+            genresDtoToDbMapper.map(networkFilms).forEach { filmsDao.insertGenre(it) }
             filmsGenresCrossRefMapper.map(networkFilms)
                 .forEach { filmsDao.insertFilmsGenreCrossRef(it) }
         }
